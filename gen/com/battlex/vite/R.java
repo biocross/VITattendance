@@ -22,7 +22,7 @@ public final class R {
         public static final int a_percent=0x7f060016;
         public static final int a_slot=0x7f060017;
         public static final int abt=0x7f06001a;
-        public static final int btnsave=0x7f060014;
+        public static final int btnsave=0x7f060012;
         public static final int img_abt=0x7f060001;
         public static final int label=0x7f060015;
         public static final int layout_root=0x7f060000;
@@ -31,7 +31,7 @@ public final class R {
         public static final int lblcon=0x7f060009;
         public static final int lblone=0x7f06000d;
         public static final int lblpercent=0x7f06000b;
-        public static final int lblreg=0x7f060012;
+        public static final int lblreg=0x7f060014;
         public static final int lblslot=0x7f060005;
         public static final int lblsub=0x7f060004;
         public static final int lbltwo=0x7f06000f;
