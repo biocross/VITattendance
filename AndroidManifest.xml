@@ -22,6 +22,7 @@
             </intent-filter>
         </activity>
         <activity android:name = ".Main"/>
+         <activity android:name = ".Restrt"  android:noHistory="true"/>
         <activity android:name = ".Info"/>
         <activity android:name = ".Register" android:noHistory="true"/>
     </application>

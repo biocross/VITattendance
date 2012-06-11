@@ -35,6 +35,7 @@ public final class R {
         public static final int lblslot=0x7f060005;
         public static final int lblsub=0x7f060004;
         public static final int lbltwo=0x7f06000f;
+        public static final int ref=0x7f06001a;
         public static final int set=0x7f060018;
         public static final int splashscreen=0x7f060011;
         public static final int txt_abt=0x7f060002;

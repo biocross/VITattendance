@@ -14,7 +14,6 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -96,6 +95,10 @@ private void abt_bx(){
 	    case R.id.abt:
 	    	abt_bx();
 	    	return true;
+	    case R.id.ref:
+	    	Intent intn = new Intent(Main.this, Restrt.class);
+	    	Main.this.startActivity(intn);
+	    	return true;
 	    default:
 	        return super.onOptionsItemSelected(item);
 	    }
@@ -161,10 +164,11 @@ private void abt_bx(){
             			String values [] = (String []) Proces.toArray (new String [Proces.size ()]);
             			String per [] = (String []) percent.toArray (new String [percent.size ()]);
             			String slots [] = (String []) slts.toArray (new String [slts.size ()]);
-            			ListView lv = getListView();
-            			LayoutInflater inflater = getLayoutInflater();
             			
-            			ViewGroup header = (ViewGroup)inflater.inflate(R.layout.header, lv, false);
+            			//ListView lv = getListView();
+            			//LayoutInflater inflater = getLayoutInflater();
+            			
+            			//ViewGroup header = (ViewGroup)inflater.inflate(R.layout.header, lv, false);
             			
             			//lv.addHeaderView(header, null, false);
             			//TextView txt_header = (TextView) findViewById(R.id.lbl_header);
