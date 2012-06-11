@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    
+    <TextView 
+    android:id = "@+id/lblreg" 
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:text="Please enter your registration number:"/>
+    
+     <EditText 
+    android:id = "@+id/txtreg"
+    android:layout_width = "fill_parent"
+    android:layout_height = "wrap_content"
+    android:background="@android:drawable/editbox_background"
+    android:layout_below = "@id/lblreg"
+    />
+      <Button
+    android:id = "@+id/btnsave"
+    android:text = "Save"
+    android:layout_width = "wrap_content"
+    android:layout_height = "wrap_content"
+    android:layout_below = "@id/txtreg"
+    android:layout_centerHorizontal = "True"
+    />
+    
+
+</RelativeLayout>

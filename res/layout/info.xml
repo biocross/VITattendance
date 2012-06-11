@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <TextView 
+    android:id = "@+id/lblsub" 
+    android:layout_width="fill_parent" 
+    android:textSize="25dp"
+    android:layout_height="wrap_content"
+    android:layout_centerHorizontal = "True"
+    android:text="Subject"/>
+    
+     <TextView 
+    android:id = "@+id/lblslot" 
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content"
+    android:layout_below = "@id/lblsub"
+    android:textSize="19dp"
+    android:text="Slot:"/>
+     
+     <TextView 
+    android:id = "@+id/txtslot" 
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:layout_below = "@id/lblslot"
+    android:text="Slot"/>
+     
+     <TextView 
+    android:id = "@+id/lblatt" 
+    android:textSize="19dp"
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content"
+    android:layout_below = "@id/txtslot"
+    android:text="Classes Attended:"/>
+     
+     <TextView 
+    android:id = "@+id/txtatt" 
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:layout_below = "@id/lblatt"
+    android:text="Slot"/>
+     
+      <TextView 
+    android:id = "@+id/lblcon" 
+    android:textSize="19dp"
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content"
+    android:layout_below = "@id/txtatt"
+    android:text="Classes Attended:"/>
+     
+     <TextView 
+    android:id = "@+id/txtcon" 
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:layout_below = "@id/lblcon"
+    android:text="Classes Conducted"/>
+     
+       <TextView 
+    android:id = "@+id/lblpercent" 
+    android:textSize="19dp"
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content"
+    android:layout_below = "@id/txtcon"
+    android:text="Percentage:"/>
+     
+     <TextView 
+    android:id = "@+id/txtpercent" 
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:layout_below = "@id/lblpercent"
+    android:text="Classes Conducted"/>
+     
+      <TextView 
+    android:id = "@+id/lblone" 
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:layout_below = "@id/txtpercent"
+    android:text="If you miss one more class: "/>
+      
+      <TextView 
+    android:id = "@+id/txtone" 
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:layout_below = "@id/lblone"
+    android:text="If you miss one more class: "/>
+      
+       <TextView 
+    android:id = "@+id/lbltwo" 
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:layout_below = "@id/txtone"
+    android:text="If you miss two more classes: "/>
+       
+       <TextView 
+    android:id = "@+id/txttwo" 
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:layout_below = "@id/lbltwo"
+    android:text="If you miss two more classes: "/>
+     
+     
+        
+     
+     
+    
+
+</RelativeLayout>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/set"
+          android:icon="@drawable/sett"
+          android:title="Settings" />
+    <item android:id="@+id/abt"
+          android:icon="@drawable/abt"
+          android:title="About"/>
+</menu>

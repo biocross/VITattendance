@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+    
+     
+
+    
+    
+    <TextView
+        android:id="@+id/label"
+        android:layout_width="250dp"
+        android:layout_height="fill_parent"
+        android:gravity="left" 
+        android:text="@+id/label"
+        android:layout_alignParentLeft="true"
+        android:textSize="20dp" >
+    </TextView>
+    
+    <TextView
+        android:id="@+id/a_percent"
+        android:layout_width="wrap_content"
+          
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:textSize="19dp" 
+        android:textStyle="bold" >
+    </TextView>
+    
+     <TextView
+        android:id="@+id/a_slot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@+id/label"
+        android:layout_below = "@id/label"
+        android:textSize="17dp" 
+        android:textStyle="italic" >
+    </TextView>
+
+   
+
+</RelativeLayout>
+		
