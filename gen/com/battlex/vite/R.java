@@ -19,41 +19,47 @@ public final class R {
         public static final int splash=0x7f020005;
     }
     public static final class id {
-        public static final int a_percent=0x7f060016;
-        public static final int a_slot=0x7f060017;
-        public static final int abt=0x7f06001a;
-        public static final int btnsave=0x7f060012;
+        public static final int a_percent=0x7f060019;
+        public static final int a_slot=0x7f06001a;
+        public static final int abt=0x7f06001e;
+        public static final int btnsave=0x7f060015;
+        public static final int feed_send=0x7f060005;
         public static final int img_abt=0x7f060001;
-        public static final int label=0x7f060015;
+        public static final int label=0x7f060018;
         public static final int layout_root=0x7f060000;
-        public static final int lbl_header=0x7f060003;
-        public static final int lblatt=0x7f060007;
-        public static final int lblcon=0x7f060009;
-        public static final int lblone=0x7f06000d;
-        public static final int lblpercent=0x7f06000b;
-        public static final int lblreg=0x7f060014;
-        public static final int lblslot=0x7f060005;
-        public static final int lblsub=0x7f060004;
-        public static final int lbltwo=0x7f06000f;
-        public static final int ref=0x7f060018;
-        public static final int set=0x7f060019;
-        public static final int splashscreen=0x7f060011;
+        public static final int lbl_feed=0x7f060003;
+        public static final int lbl_header=0x7f060006;
+        public static final int lblatt=0x7f06000a;
+        public static final int lblcon=0x7f06000c;
+        public static final int lblone=0x7f060010;
+        public static final int lblpercent=0x7f06000e;
+        public static final int lblreg=0x7f060017;
+        public static final int lblslot=0x7f060008;
+        public static final int lblsub=0x7f060007;
+        public static final int lbltwo=0x7f060012;
+        public static final int men_end=0x7f06001f;
+        public static final int men_feed=0x7f06001d;
+        public static final int ref=0x7f06001b;
+        public static final int set=0x7f06001c;
+        public static final int splashscreen=0x7f060014;
         public static final int txt_abt=0x7f060002;
-        public static final int txtatt=0x7f060008;
-        public static final int txtcon=0x7f06000a;
-        public static final int txtone=0x7f06000e;
-        public static final int txtpercent=0x7f06000c;
-        public static final int txtreg=0x7f060013;
-        public static final int txtslot=0x7f060006;
-        public static final int txttwo=0x7f060010;
+        public static final int txt_feed=0x7f060004;
+        public static final int txtatt=0x7f06000b;
+        public static final int txtcon=0x7f06000d;
+        public static final int txtone=0x7f060011;
+        public static final int txtpercent=0x7f06000f;
+        public static final int txtreg=0x7f060016;
+        public static final int txtslot=0x7f060009;
+        public static final int txttwo=0x7f060013;
     }
     public static final class layout {
         public static final int di_abt=0x7f030000;
-        public static final int header=0x7f030001;
-        public static final int info=0x7f030002;
-        public static final int main=0x7f030003;
-        public static final int register=0x7f030004;
-        public static final int rowlayout=0x7f030005;
+        public static final int feedback=0x7f030001;
+        public static final int header=0x7f030002;
+        public static final int info=0x7f030003;
+        public static final int main=0x7f030004;
+        public static final int register=0x7f030005;
+        public static final int rowlayout=0x7f030006;
     }
     public static final class menu {
         public static final int men=0x7f050000;
