@@ -114,7 +114,7 @@ private void abt_bx(){
         String title = null;
         protected void onPreExecute (){
         	dialog = new ProgressDialog(Main.this);
-        	this.dialog.setMessage("Loading data..");
+        	this.dialog.setMessage("Loading your attendance...");
         	this.dialog.setCancelable(false);
             this.dialog.show();
             
@@ -133,7 +133,7 @@ private void abt_bx(){
             				
             				 content = doc.getElementById("overview");
             	    	     links = content.getElementsByTag("td");
-            	    	    	title = doc.title();
+            	    	    	title = "Job Complete :)";
             	    	    	
             	    	    for (int i=0 ; i<links.size() ; i++ ){
             	    	    	Proces.add(links.get(i).text());

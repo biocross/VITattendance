@@ -2,28 +2,36 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
-    
-    <TextView 
-    android:id = "@+id/lblreg" 
-    android:layout_width="fill_parent" 
-    android:layout_height="wrap_content" 
-    android:text="Please enter your registration number:"/>
-    
-     <EditText 
-    android:id = "@+id/txtreg"
-    android:layout_width = "fill_parent"
-    android:layout_height = "wrap_content"
-    android:background="@android:drawable/editbox_background"
-    android:layout_below = "@id/lblreg"
-    />
+
       <Button
-    android:id = "@+id/btnsave"
-    android:text = "Save"
-    android:layout_width = "wrap_content"
-    android:layout_height = "wrap_content"
-    android:layout_below = "@id/txtreg"
-    android:layout_centerHorizontal = "True"
-    />
-    
+          android:id="@+id/btnsave"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignParentBottom="true"
+          android:layout_centerHorizontal="true"
+          android:layout_marginBottom="162dp"
+          android:text="Save" />
+
+      <EditText
+          android:id="@+id/txtreg"
+          android:layout_width="fill_parent"
+          android:layout_height="wrap_content"
+          android:layout_above="@+id/btnsave"
+          android:layout_alignParentLeft="true"
+          android:layout_marginBottom="20dp"
+          android:ems="10"
+          android:inputType="text" >
+
+          <requestFocus />
+      </EditText>
+
+      <TextView
+          android:id="@+id/lblreg"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_above="@+id/txtreg"
+          android:layout_centerHorizontal="true"
+          android:layout_marginBottom="40dp"
+          android:text="Please enter your registration number:" />
 
 </RelativeLayout>
