@@ -6,8 +6,15 @@
     <item android:id="@+id/set"
           android:icon="@drawable/sett"
           android:title="Settings" />
+    <item android:id="@+id/men_feed"
+          android:icon="@drawable/abt"
+          android:title="Feedback"/>
     <item android:id="@+id/abt"
           android:icon="@drawable/abt"
           android:title="About"/>
+    <item android:id="@+id/men_end"
+          android:icon="@drawable/abt"
+          android:title="Exit"/>
+     
    
 </menu>

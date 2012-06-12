@@ -2,12 +2,10 @@ package com.battlex.vite;
 
 import java.io.IOException;
 import java.util.ArrayList;
-
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-
 import android.app.Dialog;
 import android.app.ListActivity;
 import android.app.ProgressDialog;
@@ -17,12 +15,10 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -99,6 +95,13 @@ private void abt_bx(){
 	    	Intent intn = new Intent(Main.this, Restrt.class);
 	    	Main.this.startActivity(intn);
 	    	return true;
+	    case R.id.men_feed:
+	    	intn = new Intent(Main.this, Feedback.class);
+	    	Main.this.startActivity(intn);
+	    	return true;
+	    case R.id.men_end:
+	    	System.exit(0);
+	    	
 	    default:
 	        return super.onOptionsItemSelected(item);
 	    }
