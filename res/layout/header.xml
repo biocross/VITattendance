@@ -1,13 +1,48 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  android:layout_width="fill_parent"
-  android:layout_height="fill_parent">
-   <TextView
-        android:id="@+id/lbl_header"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="SUBJECTS"
-        android:textSize="25dp" >
-    </TextView>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical" android:layout_width="fill_parent"
+        android:layout_height="fill_parent" 
+        android:scrollbars="vertical">
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/buttonlayout" android:orientation="horizontal"
+                android:layout_width="fill_parent" android:layout_height="wrap_content"
+                android:height="32dp" android:gravity="left|top" 
+                android:paddingTop="2dp" android:paddingBottom="2dp">
+                <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:id="@+id/buttonlayout2" android:orientation="horizontal"
+                        android:layout_height="wrap_content" android:gravity="left|center_vertical"
+                        android:layout_gravity="left" android:layout_width="wrap_content">
+                        <ImageButton android:id="@+id/imgbtn1"
+                                android:layout_width="32dp" android:layout_height="32dp"
+                                android:background="@drawable/ic_launcher" />
+                        <TextView android:id="@+id/txtTest" android:layout_width="fill_parent"
+                                android:layout_height="fill_parent" android:textStyle="bold"
+                                android:text="VITattendance" android:textColor="#FFFFFF"
+                                android:textSize="15sp" android:gravity="center_vertical"
+                                android:paddingLeft="5dp" />
+                        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                android:id="@+id/buttonlayout2" android:orientation="horizontal"
+                             
+                                android:layout_height="wrap_content" android:gravity="right"
+                                android:layout_gravity="right" android:layout_width="fill_parent">
+                                <ImageButton android:id="@+id/imgbtn2"
+                                        android:layout_width="32dp" android:layout_height="32dp"
+                                        android:background="@drawable/ic_launcher" />
+                                <ImageButton android:id="@+id/imgbtn3"
+                                        android:layout_width="32dp" android:layout_height="32dp"
+                                        android:gravity="right"
+                                        android:layout_alignParentRight="true"
+                                       
+                                        android:background="@drawable/ref" />
+                        </RelativeLayout>
+                </LinearLayout>
+                <TableLayout android:id="@+id/TableLayoutTop"
+                        android:layout_gravity="left" android:scrollbars="horizontal|vertical"
+                        android:scrollbarAlwaysDrawVerticalTrack="true"
+                        android:scrollbarAlwaysDrawHorizontalTrack="true"
+                        android:layout_height="wrap_content" android:layout_width="fill_parent"
+                        android:orientation="horizontal">
+                        <TableRow android:id="@+id/TableRowTop"
+                                android:layout_height="wrap_content" android:layout_width="match_parent" />
+                </TableLayout>
+        </LinearLayout>
 </LinearLayout>

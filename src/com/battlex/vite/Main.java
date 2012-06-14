@@ -15,10 +15,14 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -36,6 +40,9 @@ public class Main extends ListActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, 
+                                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         new DownloadFilesTask().execute();
         }
     @Override
@@ -168,14 +175,14 @@ private void abt_bx(){
             			String per [] = (String []) percent.toArray (new String [percent.size ()]);
             			String slots [] = (String []) slts.toArray (new String [slts.size ()]);
             			
-            			//ListView lv = getListView();
-            			//LayoutInflater inflater = getLayoutInflater();
+            			ListView lv = getListView();
+            			LayoutInflater inflater = getLayoutInflater();
             			
-            			//ViewGroup header = (ViewGroup)inflater.inflate(R.layout.header, lv, false);
+            			ViewGroup header = (ViewGroup)inflater.inflate(R.layout.header, lv, false);
             			
-            			//lv.addHeaderView(header, null, false);
-            			//TextView txt_header = (TextView) findViewById(R.id.lbl_header);
-            			//txt_header.setTextColor(Color.RED);
+            			lv.addHeaderView(header, null, false);
+            			
+            			
             			MySimpleArrayAdapter adapter = new MySimpleArrayAdapter(getApplicationContext(), values);
             			adapter.per = per;
             			adapter.slots = slots;
