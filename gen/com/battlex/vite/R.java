@@ -13,11 +13,13 @@ public final class R {
     public static final class drawable {
         public static final int abt=0x7f020000;
         public static final int diab=0x7f020001;
-        public static final int frwd=0x7f020002;
-        public static final int ic_launcher=0x7f020003;
-        public static final int ref=0x7f020004;
-        public static final int sett=0x7f020005;
-        public static final int splash=0x7f020006;
+        public static final int ext=0x7f020002;
+        public static final int feed=0x7f020003;
+        public static final int frwd=0x7f020004;
+        public static final int ic_launcher=0x7f020005;
+        public static final int ref=0x7f020006;
+        public static final int sett=0x7f020007;
+        public static final int splash=0x7f020008;
     }
     public static final class id {
         public static final int TableLayoutTop=0x7f06000c;
@@ -31,8 +33,8 @@ public final class R {
         public static final int feed_send=0x7f060005;
         public static final int img_abt=0x7f060001;
         public static final int imgbtn1=0x7f060008;
-        public static final int imgbtn2=0x7f06000a;
-        public static final int imgbtn3=0x7f06000b;
+        public static final int imgbtn2=0x7f06000b;
+        public static final int imgbtn3=0x7f06000a;
         public static final int label=0x7f06001f;
         public static final int layout_root=0x7f060000;
         public static final int lbl_feed=0x7f060003;

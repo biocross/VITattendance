@@ -22,7 +22,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.view.WindowManager;
+import android.view.View.OnClickListener;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -41,17 +42,24 @@ public class Main extends ListActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, 
-                                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+       // getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, 
+                        //        WindowManager.LayoutParams.FLAG_FULLSCREEN);
         new DownloadFilesTask().execute();
+        
         }
+    
+    
+    //ACTIONBAR CLICK LISTNERS
+    private OnClickListener blits= new OnClickListener(){@Override public void onClick(View v) {Intent intn = new Intent(Main.this, Restrt.class);Main.this.startActivity(intn);}};
+    
+    
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
 		super.onListItemClick(l, v, position, id);
 		
 		//Toast toast = Toast.makeText(getApplicationContext(), Integer.toString(position), Toast.LENGTH_SHORT);
 		//toast.show();
-		int pos = position + 1;
+		int pos = position;
 		int j = 0;
 		for ( j = 0 ; pos>=2 ; pos-- ){
 			j = j + 5;
@@ -178,7 +186,7 @@ private void abt_bx(){
             			ListView lv = getListView();
             			LayoutInflater inflater = getLayoutInflater();
             			
-            			ViewGroup header = (ViewGroup)inflater.inflate(R.layout.header, lv, false);
+            			ViewGroup header = (ViewGroup)inflater.inflate(R.layout.header, lv , false);
             			
             			lv.addHeaderView(header, null, false);
             			
@@ -188,6 +196,9 @@ private void abt_bx(){
             			adapter.slots = slots;
             		
             			setListAdapter(adapter);
+            			ImageButton btn_ref = (ImageButton) findViewById (R.id.imgbtn3);
+            	        btn_ref.setOnClickListener(blits);
+            	        
             			
             			
             			

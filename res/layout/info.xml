@@ -41,14 +41,14 @@
     android:layout_height="wrap_content" 
     android:layout_below = "@id/lblatt"
     android:text="Slot"/>
-     
-      <TextView 
-    android:id = "@+id/lblcon" 
-    android:textSize="19dp"
-    android:layout_width="fill_parent" 
-    android:layout_height="wrap_content"
-    android:layout_below = "@id/txtatt"
-    android:text="Classes Attended:"/>
+     
+      <TextView
+          android:id="@+id/lblcon"
+          android:layout_width="fill_parent"
+          android:layout_height="wrap_content"
+          android:layout_below="@+id/txtatt"
+          android:text="Classes Conducted:"
+          android:textSize="19dp" />
      
      <TextView 
     android:id = "@+id/txtcon" 
