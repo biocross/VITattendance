@@ -40,11 +40,33 @@ public class Feedback extends Activity  {
 	  
 	  public void snd_feed(){
 		  EditText txt_feed = (EditText) findViewById (R.id.txt_feed);
-		  
-		 url = "https://vita-biocross.rhcloud.com/feedback.php?feedback=".concat(txt_feed.getText().toString());
+		 String txt = txt_feed.getText().toString();
+		 txt = replaceSpecial(txt);
+		// Context context = getApplicationContext();
+		//int duration = Toast.LENGTH_SHORT;
+		//Toast toast = Toast.makeText(context, txt, duration);
+		//toast.show();
+		 url = "https://vita-biocross.rhcloud.com/feedback.php?feedback=".concat(txt);
 		 new SendFeedback().execute();
 		 
 	  }
+	  public static String replaceSpecial(String input)
+	  {
+	      // Output will be at least as long as input
+	      StringBuilder builder = new StringBuilder(input.length());
+
+	      for (int i = 0; i < input.length(); i++)
+	      {
+	          char c = input.charAt(i);
+	          switch (c)
+	          {
+	              case ' ': builder.append("%20"); break;
+	             
+	              default: builder.append(c); break;
+	          }
+	      }
+	      return builder.toString();}
+	  
 	  
 	  private class SendFeedback extends AsyncTask <Void, Void, Void>{
 		  private ProgressDialog dialog ;
