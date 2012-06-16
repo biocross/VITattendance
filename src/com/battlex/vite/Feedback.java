@@ -4,6 +4,9 @@
 package com.battlex.vite;
 
 
+import java.io.IOException;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -21,6 +24,9 @@ import android.widget.Toast;
  */
 public class Feedback extends Activity  {
 	 String url;
+	 Document doc = null;
+	 
+	 
 	
 	  @Override
 	    public void onCreate(Bundle savedInstanceState) {
@@ -35,36 +41,45 @@ public class Feedback extends Activity  {
 	  public void snd_feed(){
 		  EditText txt_feed = (EditText) findViewById (R.id.txt_feed);
 		  
-		 url = "Your link here".concat(txt_feed.getText().toString());
+		 url = "https://vita-biocross.rhcloud.com/feedback.php?feedback=".concat(txt_feed.getText().toString());
 		 new SendFeedback().execute();
 		 
 	  }
 	  
 	  private class SendFeedback extends AsyncTask <Void, Void, Void>{
 		  private ProgressDialog dialog ;
-		  
+		  int res;
 		  protected void onPreExecute (){
 	        	dialog = new ProgressDialog(Feedback.this);
-	        	this.dialog.setMessage("Sending your feedback...");
+	        	this.dialog.setMessage("Posting feedback...");
 	        	this.dialog.setCancelable(false);
 	            this.dialog.show();
 	        }
 
 		@Override
 		protected Void doInBackground(Void... arg0) {
+			try{
+			doc = Jsoup.connect(url).timeout(0).get();
+			res = Integer.parseInt(doc.body().text());
+			}catch(IOException e){res = 0;}
 			
-			for(int k = 0 ; k<=5 ; k++){
-				
-			}
 			return null;
 		}
 		
 		protected void onPostExecute(Void result){
 			Context context = getApplicationContext();
 			int duration = Toast.LENGTH_SHORT;
-			Toast toast = Toast.makeText(context, "Feedback sent! :)", duration);
+			String msg;
+			
+			if (res == 0){msg = "Error occured while posting feedback! Please try again.";}
+			
+			else{msg = "Feedback posted! :)";}
+			
+			Toast toast = Toast.makeText(context, msg, duration);
 			if (dialog.isShowing()) {dialog.dismiss();}
+			
 			toast.show();
+			
 			//Intent intn;
 			//intn = new Intent(Feedback.this, Main.class);
 	    	//Feedback.this.startActivity(intn);
