@@ -6,6 +6,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+
 import android.app.Dialog;
 import android.app.ListActivity;
 import android.app.ProgressDialog;
@@ -46,13 +47,15 @@ public class Main extends ListActivity {
                         //        WindowManager.LayoutParams.FLAG_FULLSCREEN);
         new DownloadFilesTask().execute();
         
+        
+        
         }
     
     
     //ACTIONBAR CLICK LISTNERS
-    private OnClickListener blits= new OnClickListener(){@Override public void onClick(View v) {Intent intn = new Intent(Main.this, Restrt.class);Main.this.startActivity(intn);}};
-    
-    
+    private OnClickListener blits= new OnClickListener(){@Override public void onClick(View v) {Intent intn = new Intent(Main.this, Restrt.class);Main.this.startActivity(intn);Main.this.finish();}};
+    private OnClickListener act_feed= new OnClickListener(){@Override public void onClick(View v) {Intent intn = new Intent(Main.this, Register.class);Main.this.startActivity(intn);}};
+    private OnClickListener act_men = new OnClickListener(){@Override public void onClick(View v) {openOptionsMenu(); }};
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
 		super.onListItemClick(l, v, position, id);
@@ -86,7 +89,12 @@ private void abt_bx(){
 
 		dialog.setContentView(R.layout.di_abt);
 		TextView text = (TextView) dialog.findViewById(R.id.txt_abt);
-		text.setText("Developer: \nSau\nBiocross\n\n\nBeta Testers:\nUD\nSid\n\nDevices Tested:\nAVD\nXperia X8\nGalaxy S+\nGalaxy Ace ");
+		
+		//TextView text_email = (TextView) dialog.findViewById(R.id.txt_email);
+		//text_email.setText(Html.fromHtml("<a href=\"mailto:battlex2010@yahoo.com\">Sau</a>"));
+		//text_email.setMovementMethod(LinkMovementMethod.getInstance());
+		
+		text.setText("Version: 1.2 \n\n\nDevelopers: \nSau\nBiocross\n\n\nBeta Testers:\nUD\nSid\n\nDevices Tested:\nAVD\nXperia X8\nGalaxy S+\nGalaxy Ace ");
 		ImageView image = (ImageView) dialog.findViewById(R.id.img_abt);
 		image.setImageResource(R.drawable.diab);
 		dialog.setTitle("About");
@@ -109,6 +117,7 @@ private void abt_bx(){
 	    case R.id.ref:
 	    	Intent intn = new Intent(Main.this, Restrt.class);
 	    	Main.this.startActivity(intn);
+	    	Main.this.finish();
 	    	return true;
 	    case R.id.men_feed:
 	    	intn = new Intent(Main.this, Feedback.class);
@@ -198,6 +207,10 @@ private void abt_bx(){
             			setListAdapter(adapter);
             			ImageButton btn_ref = (ImageButton) findViewById (R.id.imgbtn3);
             	        btn_ref.setOnClickListener(blits);
+            	        ImageButton btn_feed = (ImageButton) findViewById (R.id.imgbtn2);
+            	        btn_feed.setOnClickListener(act_feed);
+            	        ImageButton btn_men = (ImageButton) findViewById (R.id.imgbtn4);
+            	        btn_men.setOnClickListener(act_men);
             	        
             			
             			

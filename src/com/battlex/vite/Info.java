@@ -41,8 +41,8 @@ public class Info extends Activity {
 	        one = ((att/(cond +1)) *100);
 	        two = ((att/(cond +2)) *100);
 	        
-	        txt6.setText(Float.toString(one).concat(" %"));
-	        txt7.setText(Float.toString(two).concat(" %"));
+	        txt6.setText(Integer.toString((int)(Math.round(one))).concat(" %"));
+	        txt7.setText(Integer.toString((int)(Math.round(two))).concat(" %"));
 	        
 	        
 	 }
