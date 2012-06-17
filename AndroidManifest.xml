@@ -21,6 +21,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <service android:name="Updater_service" > </service>
         <activity android:name = ".Main" android:screenOrientation="portrait"  />
         <activity android:name = ".Feedback" android:noHistory="true" android:screenOrientation="portrait"/>
          <activity android:name = ".Restrt"  android:noHistory="true"/>

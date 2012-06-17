@@ -5,6 +5,8 @@ package com.battlex.vite;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -54,6 +56,16 @@ public class Splash extends Activity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, 
                                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.main);
+        //START SERVICE
+        PackageInfo pInfo = null;
+		try {
+			pInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
+		} catch (NameNotFoundException e) {}
+		//Toast.makeText(getApplicationContext(), pInfo.versionName, Toast.LENGTH_LONG).show();
+			Float curver = new Float(pInfo.versionName);
+			Intent cur = new Intent(this,Updater_service.class);
+			cur.putExtra("ver", curver);
+			startService(cur);
         splash = (ImageView) findViewById(R.id.splashscreen);
         Message msg = new Message();
         msg.what = STOPSPLASH;
