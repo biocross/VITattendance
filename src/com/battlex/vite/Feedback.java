@@ -61,6 +61,8 @@ public class Feedback extends Activity  {
 	          switch (c)
 	          {
 	              case ' ': builder.append("%20"); break;
+	              
+	              case '\n': builder.append("%20"); break;
 	             
 	              default: builder.append(c); break;
 	          }
