@@ -22,7 +22,10 @@
             </intent-filter>
         </activity>
         <service android:name="Updater_service" > </service>
+<<<<<<< HEAD
         <service android:name="Update_service" > </service>
+=======
+>>>>>>> f61b81af9c08e78f0a757ebef3b06c2de03021b8
         <activity android:name = ".Main" android:screenOrientation="portrait"  />
         <activity android:name = ".Feedback" android:noHistory="true" android:screenOrientation="portrait"/>
          <activity android:name = ".Restrt"  android:noHistory="true"/>
