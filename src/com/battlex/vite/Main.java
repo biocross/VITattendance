@@ -39,17 +39,23 @@ public class Main extends ListActivity {
 	ArrayList<String> slts = new ArrayList<String>();
 	
     /** Called when the activity is first created. */
-    @Override
+    
+	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
+        
+       
+		
        // getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, 
                         //        WindowManager.LayoutParams.FLAG_FULLSCREEN);
+		
+		
+		//GET ATTENDANCE
         new DownloadFilesTask().execute();
-        
-        
-        
-        }
+       
+		
+    }
     
     
     //ACTIONBAR CLICK LISTNERS

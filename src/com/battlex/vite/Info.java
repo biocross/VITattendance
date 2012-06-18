@@ -14,6 +14,7 @@ public class Info extends Activity {
 	 @Override
 	    public void onCreate(Bundle savedInstanceState) {
 	        super.onCreate(savedInstanceState);
+	        //getWindow().addFlags(WindowManager.LayoutParams.FLAG_BLUR_BEHIND);
 	        setContentView(R.layout.info);
 	        data = getIntent().getStringArrayListExtra("data");
 	        String values [] = (String []) data.toArray (new String [data.size ()]);

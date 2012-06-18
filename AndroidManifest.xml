@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.battlex.vite"
-    android:versionCode="1"
+    android:versionCode="2"
     android:versionName="1.2" >
     <uses-permission android:name = "android.permission.INTERNET"/>
+<<<<<<< HEAD
     
 
     <uses-sdk android:minSdkVersion="9" android:targetSdkVersion="10" />
+=======
+    <uses-permission android:name = "android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name = "android.permission.INSTALL_PACKAGES" />
+    <uses-permission android:name = "android.permission.DELETE_PACKAGES" />
+    <uses-sdk android:minSdkVersion="7" android:targetSdkVersion="8" />
+>>>>>>> Updates
 
     <application
         android:icon="@drawable/ic_launcher"
@@ -21,6 +28,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <service android:name="Updater_service" > </service>
+
+        <service android:name="Update_service" > </service>
         <activity android:name = ".Main" android:screenOrientation="portrait"  />
         <activity android:name = ".Feedback" android:noHistory="true" android:screenOrientation="portrait"/>
          <activity android:name = ".Restrt"  android:noHistory="true"/>

@@ -3,35 +3,40 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-      <Button
-          android:id="@+id/btnsave"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_alignParentBottom="true"
-          android:layout_centerHorizontal="true"
-          android:layout_marginBottom="162dp"
-          android:text="Save" />
+    <TextView
+        android:id="@+id/lblreg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="14dp"
+        android:text="Please enter your registration number:" />
 
-      <EditText
-          android:id="@+id/txtreg"
-          android:layout_width="fill_parent"
-          android:layout_height="wrap_content"
-          android:layout_above="@+id/btnsave"
-          android:layout_alignParentLeft="true"
-          android:layout_marginBottom="20dp"
-          android:ems="10"
-          android:inputType="text" >
+    <EditText
+        android:id="@+id/txtreg"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/lblreg"
+        android:layout_marginTop="14dp"
+        android:ems="10"
+        android:inputType="text" />
 
-          <requestFocus />
-      </EditText>
+    <Button
+        android:id="@+id/btnsave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtreg"
+        android:layout_centerHorizontal="true"
+        android:text="Save" />
 
-      <TextView
-          android:id="@+id/lblreg"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_above="@+id/txtreg"
-          android:layout_centerHorizontal="true"
-          android:layout_marginBottom="40dp"
-          android:text="Please enter your registration number:" />
+    <Button
+        android:id="@+id/btnupd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnsave"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="18dp"
+        android:text="Update now!" />
 
 </RelativeLayout>
