@@ -40,7 +40,20 @@ public class Updater_service extends IntentService {
 			   public void run() {  
 				   SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
 				   SharedPreferences.Editor editor = preferences.edit();
-				   editor.putInt("upto", isit);                   
+				   editor.putInt("upto", isit);  
+				   editor.commit();
+			   }  
+			});  
+	}
+	
+	void ur(final String url){
+		handler.post(new Runnable() {  
+			   @Override  
+			   public void run() {  
+				   SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+				   SharedPreferences.Editor editor = preferences.edit();
+				   editor.putString("url", url);    
+				   editor.commit();
 			   }  
 			});  
 	}
@@ -50,22 +63,15 @@ public class Updater_service extends IntentService {
 		try{
 		float curver = intent.getFloatExtra("ver", 1);
 		//toaster( Float.toString(curver));
-		float latest;
-		String url = "https://vita-biocross.rhcloud.com/feedback.php?feedback=update_checker";
+		@SuppressWarnings("unused")
+		int latest ;
+		String url = "http://vita-biocross.rhcloud.com/update.php?cv=".concat(Float.toString(curver));
 		doc = Jsoup.connect(url).timeout(0).get();
 		String res = doc.body().text();
-		latest = new Float(res);
-		if (curver < latest){
-			upto(0);
-			toaster("New version available!");
-			
-			//Toast.makeText(getApplicationContext(), "Update required!", Toast.LENGTH_LONG).show();
-		}
-		else{
-			upto(1);
-			//toaster("Up to date!");
-			//Toast.makeText(getApplicationContext(), "Up to date!", Toast.LENGTH_LONG).show();
-		}
+		try{
+		latest = Integer.parseInt(res);
+		upto(1);
+		}catch(NumberFormatException e){upto(0);toaster("New version available!");ur(res);}
 		
 		}catch(IOException e){}
 	}
