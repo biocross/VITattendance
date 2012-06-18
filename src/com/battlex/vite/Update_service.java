@@ -92,6 +92,7 @@ public class Update_service extends IntentService {
                 
             } catch (Exception e) {
 				e.printStackTrace();
+				notificationManager.cancel(42);
 			}
         
 
