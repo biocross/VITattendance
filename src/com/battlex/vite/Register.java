@@ -41,7 +41,8 @@ public class Register extends Activity {
 	private OnClickListener blits= new OnClickListener(){@Override public void onClick(View v) {saveit();}};
 	private OnClickListener proc_upd= new OnClickListener(){@Override public void onClick(View v) {updater();}};
 	private void updater(){
-		
+		Button btnupd = (Button) findViewById (R.id.btnupd);
+		btnupd.setVisibility(1); btnupd.setVisibility(View.GONE);
 		Intent cur = new Intent(this,Update_service.class);
 		cur.putExtra("url", ur);
 		startService(cur);

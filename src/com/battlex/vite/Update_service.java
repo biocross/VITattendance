@@ -15,29 +15,32 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Environment;
+import android.os.Handler;
 import android.widget.ProgressBar;
 import android.widget.RemoteViews;
 
 public class Update_service extends IntentService {
 	private int progress = 10;
 	ProgressBar progressBar;
-	final Notification notification = new Notification(R.drawable.ic_launcher, "Downloading...", System
+	final Notification notification = new Notification(R.drawable.down, "Downloading...", System
             .currentTimeMillis());
 	
+	private Handler handler;  
 	
 	public Update_service() {
 		super("Update_service");
-		// TODO Auto-generated constructor stub
+	
 	}
 	
 	@Override  
 	public int onStartCommand(Intent intent, int flags, int startId) {
+		handler = new Handler();  
 		final PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, intent, 0);
 		
         notification.flags = notification.flags | Notification.FLAG_ONGOING_EVENT;
         notification.contentView = new RemoteViews(getApplicationContext().getPackageName(), R.layout.download_progress);
         notification.contentIntent = pendingIntent;
-        notification.contentView.setImageViewResource(R.id.status_icon, R.drawable.ic_launcher);
+        notification.contentView.setImageViewResource(R.id.status_icon, R.drawable.down);
         notification.contentView.setTextViewText(R.id.status_text, "Downloading");
         notification.contentView.setProgressBar(R.id.status_progress, 100, progress, false);
 		 return super.onStartCommand(intent, flags, startId);  
@@ -51,7 +54,7 @@ public class Update_service extends IntentService {
 		final NotificationManager notificationManager = (NotificationManager) getApplicationContext().getSystemService(
                 Context.NOTIFICATION_SERVICE);
 		 
-		// TODO Auto-generated method stub
+	
 		
 		notificationManager.notify(42, notification);
             
@@ -60,10 +63,10 @@ public class Update_service extends IntentService {
             	URL url = new URL(intent.getStringExtra("url"));
             	URLConnection connection = url.openConnection();
                 connection.connect();
-                // this will be useful so that you can show a typical 0-100% progress bar
+                
                 int fileLength = connection.getContentLength();
 
-                // download the file
+                
                 InputStream input = new BufferedInputStream(url.openStream());
                 String pathy =  Environment.getExternalStorageDirectory().toString().concat("/update.apk");
                 
@@ -74,36 +77,33 @@ public class Update_service extends IntentService {
                 int count;
                 while ((count = input.read(data)) != -1) {
                     total += count;
-                    // publishing the progress....
+                    
                     progress = (int) (total * 100 / fileLength);
                     output.write(data, 0, count);
                     notification.contentView.setProgressBar(R.id.status_progress, 100, progress, false);
-                    // inform the progress bar of updates in progress
+                    
                     notificationManager.notify(42, notification);
                 }
-                
-
                 output.flush();
                 output.close();
                 input.close();
-                
                 notificationManager.cancel(42);
-                openFile(pathy);
-                
+                openFile(pathy);                
             } catch (Exception e) {
 				e.printStackTrace();
 				notificationManager.cancel(42);
-			}
-        
-
-        // remove the notification (we're done)
-        
+			}      
 	}
 	protected void openFile(String fileName) {
-	    Intent install = new Intent(Intent.ACTION_VIEW);
-	    install.setDataAndType(Uri.fromFile(new File(fileName)),
-	            "MIME-TYPE");
-	    startActivity(install);
-	}
+		handler.post(new Runnable() {  
+			   @Override  
+			   public void run() {  
+				   Intent intent = new Intent(Intent.ACTION_VIEW);
+				   intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+					intent.setDataAndType(Uri.fromFile(new File(Environment.getExternalStorageDirectory() + "/update.apk")), "application/vnd.android.package-archive");
+					startActivity(intent);   
+			   }  
+			}); }
+	
 
 }
