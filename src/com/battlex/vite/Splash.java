@@ -3,6 +3,7 @@ package com.battlex.vite;
 
 
 import android.app.Activity;
+import com.crittercism.app.Crittercism;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
@@ -52,6 +53,9 @@ public class Splash extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Crittercism.init(getApplicationContext(), "4feb55b9be790e162a000003");
+        String breadcrumb = "Crittercism has init, splash displayed.";
+        Crittercism.leaveBreadcrumb(breadcrumb);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, 
                                 WindowManager.LayoutParams.FLAG_FULLSCREEN);

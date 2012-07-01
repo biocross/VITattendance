@@ -1,5 +1,5 @@
 package com.battlex.vite;
-
+import com.crittercism.app.Crittercism;
 import java.io.IOException;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -71,6 +71,8 @@ public class Updater_service extends IntentService {
 		try{
 		latest = Integer.parseInt(res);
 		upto(1);
+		String breadcrumb = "Update check has completed.";
+		Crittercism.leaveBreadcrumb(breadcrumb);
 		}catch(NumberFormatException e){upto(0);toaster("New version available!");ur(res);}
 		
 		}catch(IOException e){}

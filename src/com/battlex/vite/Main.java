@@ -43,6 +43,7 @@ public class Main extends ListActivity {
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+       
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         
        
@@ -186,9 +187,11 @@ private void abt_bx(){
     			return null;
     		}
             		protected void onPostExecute(Void result){
+            			
             			Context context = getApplicationContext();
             			CharSequence text = title;
             			if (title==null){
+            				
             				text = "Network error! Please relaunch app!";           			
             			}
             			int duration = Toast.LENGTH_SHORT;
