@@ -12,9 +12,13 @@
     <item android:id="@+id/abt"
           android:icon="@drawable/abt"
           android:title="About"/>
+     <item android:id="@+id/men_upd"
+          android:icon="@drawable/down"
+          android:title="Update"/>
     <item android:id="@+id/men_end"
           android:icon="@drawable/ext"
           android:title="Exit"/>
+   
      
    
 </menu>

@@ -2,12 +2,16 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
+    <include android:id="@+id/head"
+         layout="@layout/reg_header"
+         android:layout_height="wrap_content"
+         android:layout_width="fill_parent"/>
 
     <TextView
         android:id="@+id/lblreg"
+        android:layout_below = "@id/head"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="14dp"
         android:text="Please enter your registration number:" />
@@ -29,14 +33,14 @@
         android:layout_below="@+id/txtreg"
         android:layout_centerHorizontal="true"
         android:text="Save" />
-
-    <Button
+     <Button
         android:id="@+id/btnupd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/btnsave"
+        android:layout_below="@+id/txtreg"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="18dp"
-        android:text="Update now!" />
+        android:text="Save" />
+     
+
 
 </RelativeLayout>

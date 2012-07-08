@@ -30,11 +30,4 @@
 		<nature>com.android.ide.eclipse.adt.AndroidNature</nature>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>libs/crittercism_v2_1_3_rev1 (1).jar</name>
-			<type>1</type>
-			<locationURI>PARENT-2-PROJECT_LOC/Downloads/crittercism_v2_1_3_rev1%20(1).jar</locationURI>
-		</link>
-	</linkedResources>
 </projectDescription>

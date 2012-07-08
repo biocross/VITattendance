@@ -3,13 +3,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-
+<include android:id="@+id/head"
+         layout="@layout/cmn_header"
+         android:layout_height="wrap_content"
+         android:layout_width="fill_parent"/>
     <TextView
         android:id="@+id/lbl_feed"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Enter your feedback: " />
-
     <EditText
         android:id="@+id/txt_feed"
         android:layout_width="match_parent"
@@ -17,7 +19,6 @@
         android:layout_weight="0.03"
         android:ems="10"
         android:inputType="textMultiLine" />
-
     <Button
         android:id="@+id/feed_send"
         android:layout_width="match_parent"

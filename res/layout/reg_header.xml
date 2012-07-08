@@ -1,0 +1,43 @@
+ <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        
+     android:layout_weight="1" 
+        android:orientation="vertical" android:layout_width="fill_parent"
+        android:layout_height="fill_parent" 
+        android:scrollbars="vertical">
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/buttonlayout" android:orientation="horizontal"
+                android:layout_width="fill_parent" android:layout_height="wrap_content"
+                android:height="32dp" android:gravity="left|top" 
+                android:paddingTop="2dp" android:paddingBottom="2dp">
+                <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:id="@+id/buttonlayout2" android:orientation="horizontal"
+                        android:layout_height="wrap_content" android:gravity="left|center_vertical"
+                        android:layout_gravity="left" android:layout_width="wrap_content">
+                        <ImageButton android:id="@+id/btn_back"
+                                android:layout_width="32dp" android:layout_height="32dp"
+                                android:background="@drawable/ic_launcher" />
+
+                        <TextView
+                            android:id="@+id/txtTest"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="5dp"
+                            android:text="VITattendance"
+                            android:textColor="#FFFFFF"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+                
+                </LinearLayout>
+                <TableLayout android:id="@+id/TableLayoutTop"
+                        android:layout_gravity="left" android:scrollbars="horizontal|vertical"
+                        android:scrollbarAlwaysDrawVerticalTrack="true"
+                        android:scrollbarAlwaysDrawHorizontalTrack="true"
+                        android:layout_height="wrap_content" android:layout_width="fill_parent"
+                        android:orientation="horizontal">
+                        <TableRow android:id="@+id/TableRowTop"
+                                android:layout_height="wrap_content" android:layout_width="match_parent" />
+                </TableLayout>
+        </LinearLayout>
+</LinearLayout>

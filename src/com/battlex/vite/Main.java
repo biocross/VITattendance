@@ -85,10 +85,18 @@ public class Main extends ListActivity {
 		intn.putStringArrayListExtra("data", data);
 		 Main.this.startActivity(intn);
 		}
- 
+ String ur;
  //MENU
 private void setcl(){Intent intn = new Intent(Main.this, Register.class);
 Main.this.startActivity(intn);}
+@Override
+public boolean onPrepareOptionsMenu (Menu menu) {
+	 SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+	ur = preferences.getString("url","notset");
+    int upto = preferences.getInt("upto", 0);
+    if (upto!=0){menu.getItem(4).setEnabled(false);}
+    return true;
+}
     
 private void abt_bx(){
 		
@@ -132,6 +140,11 @@ private void abt_bx(){
 	    	return true;
 	    case R.id.men_end:
 	    	System.exit(0);
+	    case R.id.men_upd:
+	    	Intent cur = new Intent(this,Update_service.class);
+			cur.putExtra("url", ur);
+			startService(cur);
+	    	
 	    	
 	    default:
 	        return super.onOptionsItemSelected(item);

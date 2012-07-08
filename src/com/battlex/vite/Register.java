@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
+import android.view.Window;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,19 +18,20 @@ public class Register extends Activity {
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		  super.onCreate(savedInstanceState);
 	        setContentView(R.layout.register); 
 	        EditText txt = (EditText) findViewById(R.id.txtreg);
 	        txt.setTextColor(Color.BLACK);
 	        Button btnSave = (Button) findViewById (R.id.btnsave);
 	        btnSave.setOnClickListener(blits);
-	        Button btnupd = (Button) findViewById (R.id.btnupd);
-	        btnupd.setOnClickListener(proc_upd);
+	    Button btnupd = (Button) findViewById (R.id.btnupd);
+	      btnupd.setOnClickListener(proc_upd);
 	        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
             String ret = preferences.getString("regnum","notset");
-            ur = preferences.getString("url","notset");
-            int upto = preferences.getInt("upto", 0);
-            if (upto != 0){ btnupd.setVisibility(1); btnupd.setVisibility(View.GONE);}
+          ur = preferences.getString("url","notset");
+          int upto = preferences.getInt("upto", 0);
+           btnupd.setVisibility(1); btnupd.setVisibility(View.GONE);
             
             if (ret!="notset"){
             	EditText txtreg = (EditText) findViewById (R.id.txtreg);

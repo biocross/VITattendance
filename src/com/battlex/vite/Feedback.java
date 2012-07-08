@@ -13,9 +13,11 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 /**
@@ -31,12 +33,15 @@ public class Feedback extends Activity  {
 	  @Override
 	    public void onCreate(Bundle savedInstanceState) {
 	        super.onCreate(savedInstanceState);
+	        requestWindowFeature(Window.FEATURE_NO_TITLE);
 	        setContentView(R.layout.feedback);
+	        ImageButton btn_ref = (ImageButton) findViewById (R.id.btn_back);
+	        btn_ref.setOnClickListener(act_back);
 	        Button btnSave = (Button) findViewById (R.id.feed_send);
 	        btnSave.setOnClickListener(blits);
 	  }
 	  private OnClickListener blits= new OnClickListener(){@Override public void onClick(View v) {snd_feed();}};
-	
+	  private OnClickListener act_back= new OnClickListener(){@Override public void onClick(View v) {finish();}};
 	  
 	  public void snd_feed(){
 		  EditText txt_feed = (EditText) findViewById (R.id.txt_feed);
