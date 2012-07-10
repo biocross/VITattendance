@@ -53,9 +53,9 @@ public final class R {
         public static final int lblslot=0x7f060015;
         public static final int lblsub=0x7f060014;
         public static final int lbltwo=0x7f06001f;
-        public static final int men_end=0x7f06002d;
+        public static final int men_end=0x7f06002e;
         public static final int men_feed=0x7f06002b;
-        public static final int men_upd=0x7f06002e;
+        public static final int men_upd=0x7f06002d;
         public static final int ref=0x7f060029;
         public static final int set=0x7f06002a;
         public static final int splashscreen=0x7f060021;

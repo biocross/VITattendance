@@ -65,7 +65,7 @@ public class Updater_service extends IntentService {
 		//toaster( Float.toString(curver));
 		@SuppressWarnings("unused")
 		int latest ;
-		String url = "http://vita-biocross.rhcloud.com/update.php?cv=".concat(Float.toString(curver));
+		String url = "http://vita-biocross.rhcloud.com/android/update.php?cv=".concat(Float.toString(curver));
 		doc = Jsoup.connect(url).timeout(0).get();
 		String res = doc.body().text();
 		try{

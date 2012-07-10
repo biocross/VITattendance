@@ -51,7 +51,7 @@ public class Feedback extends Activity  {
 		//int duration = Toast.LENGTH_SHORT;
 		//Toast toast = Toast.makeText(context, txt, duration);
 		//toast.show();
-		 url = "https://vita-biocross.rhcloud.com/feedback.php?feedback=".concat(txt);
+		 url = "https://vita-biocross.rhcloud.com/android/feedback.php?feedback=".concat(txt);
 		 new SendFeedback().execute();
 		 
 	  }
