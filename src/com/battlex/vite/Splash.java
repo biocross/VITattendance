@@ -52,6 +52,8 @@ public class Splash extends Activity {
 	/** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
+    	
+
         super.onCreate(savedInstanceState);
         Crittercism.init(getApplicationContext(), "4feb55b9be790e162a000003");
         String breadcrumb = "Crittercism has init, splash displayed.";
@@ -67,8 +69,10 @@ public class Splash extends Activity {
 		} catch (NameNotFoundException e) {}
 		//Toast.makeText(getApplicationContext(), pInfo.versionName, Toast.LENGTH_LONG).show();
 			Float curver = new Float(pInfo.versionName);
-			Intent cur = new Intent(this,Updater_service.class);
-			cur.putExtra("ver", curver);
+			//Intent cur = new Intent(this,Updater_service.class);
+			//cur.putExtra("ver", curver);
+			//startService(cur);
+			Intent cur = new Intent(getApplicationContext(),PushNews.class);
 			startService(cur);
         splash = (ImageView) findViewById(R.id.splashscreen);
         Message msg = new Message();

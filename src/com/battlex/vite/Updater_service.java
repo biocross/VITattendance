@@ -4,6 +4,10 @@ import java.io.IOException;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import android.app.IntentService;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Handler;
@@ -58,6 +62,33 @@ public class Updater_service extends IntentService {
 			});  
 	}
 	
+	private void shownoti(String title, String text){
+		
+		String ns = Context.NOTIFICATION_SERVICE;
+		NotificationManager mNotificationManager = (NotificationManager) getSystemService(ns);
+		int icon = R.drawable.ic_launcher;
+		CharSequence tickerText = text;
+		long when = System.currentTimeMillis();
+
+		Notification notification = new Notification(icon, tickerText, when);
+		notification.flags = notification.flags | Notification.FLAG_AUTO_CANCEL;
+		Context context = getApplicationContext();
+		CharSequence contentTitle = title;
+		CharSequence contentText = text;
+		SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+		String ur;
+		ur = preferences.getString("url","notset");
+		Intent cur = new Intent(this,Update_service.class);
+		cur.putExtra("url", ur);
+		
+		PendingIntent contentIntent = PendingIntent.getService(this, 0, cur, 0);
+
+		notification.setLatestEventInfo(context, contentTitle, contentText, contentIntent);
+		final int HELLO_ID = 1;
+
+		mNotificationManager.notify(HELLO_ID, notification);
+	}
+	
 	@Override
 	protected void onHandleIntent(Intent intent) {
 		try{
@@ -73,7 +104,8 @@ public class Updater_service extends IntentService {
 		upto(1);
 		String breadcrumb = "Update check has completed.";
 		Crittercism.leaveBreadcrumb(breadcrumb);
-		}catch(NumberFormatException e){upto(0);toaster("New version available!");ur(res);}
+		
+		}catch(NumberFormatException e){upto(0);shownoti("VITattendance", "An update is available!");ur(res);}
 		
 		}catch(IOException e){}
 	}

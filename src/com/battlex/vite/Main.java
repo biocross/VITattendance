@@ -16,6 +16,7 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -31,6 +32,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class Main extends ListActivity {
+	
+	
+		
+	
+	
 	Document doc = null;
 	Element content = null;
     Elements links = null;
@@ -233,6 +239,10 @@ private void abt_bx(){
             	        btn_feed.setOnClickListener(act_feed);
             	        ImageButton btn_men = (ImageButton) findViewById (R.id.imgbtn4);
             	        btn_men.setOnClickListener(act_men);
+            	       
+            	        
+            	        //STARTING PUSH NEWS HERE BITCHESS
+            	        
             	        
             			
             			

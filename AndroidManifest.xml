@@ -8,6 +8,13 @@
     <uses-permission android:name = "android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name = "android.permission.INSTALL_PACKAGES" />
     <uses-permission android:name = "android.permission.DELETE_PACKAGES" />
+   
+    
+    
+    
+    
+    
+    
     <application
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name" >
@@ -25,12 +32,14 @@
             </intent-filter>
         </activity>
         <service android:name="Updater_service" > </service>
+        
         <service android:name="Update_service" > </service>
         <activity android:name = ".Main" android:screenOrientation="portrait"  />
         <activity android:name = ".Feedback" android:noHistory="true" android:screenOrientation="portrait"/>
          <activity android:name = ".Restrt"  android:noHistory="true"/>
         <activity android:name = ".Info"/>
         <activity android:name = ".Register" android:noHistory="true" android:screenOrientation="portrait"/>
+
     </application>
 
 </manifest>
