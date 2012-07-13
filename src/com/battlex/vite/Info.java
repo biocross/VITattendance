@@ -1,9 +1,13 @@
 package com.battlex.vite;
 
+/**
+ * @author Saurabh
+ *
+ *                     INFO IN DETAIL PAGE
+ */
 import java.util.ArrayList;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;

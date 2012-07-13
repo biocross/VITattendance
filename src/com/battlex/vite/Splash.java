@@ -1,6 +1,15 @@
 package com.battlex.vite;
 
+/**
+ * @author Saurabh
+ * @author Sids
+ *
+ *                     SPLASH SCREEN
+ */
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 
 import android.app.Activity;
 import com.crittercism.app.Crittercism;
@@ -46,6 +55,7 @@ public class Splash extends Activity {
          }
  };
     
+ 
 	
 	
 	
@@ -69,11 +79,10 @@ public class Splash extends Activity {
 		} catch (NameNotFoundException e) {}
 		//Toast.makeText(getApplicationContext(), pInfo.versionName, Toast.LENGTH_LONG).show();
 			Float curver = new Float(pInfo.versionName);
-			//Intent cur = new Intent(this,Updater_service.class);
-			//cur.putExtra("ver", curver);
-			//startService(cur);
-			Intent cur = new Intent(getApplicationContext(),PushNews.class);
+			Intent cur = new Intent(this,Updater_service.class);
+			cur.putExtra("ver", curver);
 			startService(cur);
+			
         splash = (ImageView) findViewById(R.id.splashscreen);
         Message msg = new Message();
         msg.what = STOPSPLASH;

@@ -13,6 +13,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+/**
+ * @author Saurabh
+ *
+ *                     SETTINGS PAGE
+ */
+
+
 public class Register extends Activity {
 	String ur;
 	
@@ -30,7 +37,6 @@ public class Register extends Activity {
 	        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
             String ret = preferences.getString("regnum","notset");
           ur = preferences.getString("url","notset");
-          int upto = preferences.getInt("upto", 0);
            btnupd.setVisibility(1); btnupd.setVisibility(View.GONE);
             
             if (ret!="notset"){

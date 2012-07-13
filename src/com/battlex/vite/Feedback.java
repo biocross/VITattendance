@@ -2,7 +2,12 @@
  * 
  */
 package com.battlex.vite;
-
+/**
+ * @author Saurabh
+ * @author Sids
+ *
+ *                     FEEDBACK PAGE
+ */
 
 import java.io.IOException;
 import org.jsoup.Jsoup;
@@ -20,10 +25,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-/**
- * @author Saurabh
- *
- */
+
 public class Feedback extends Activity  {
 	 String url;
 	 Document doc = null;

@@ -1,5 +1,9 @@
 package com.battlex.vite;
-
+/**
+ * @author Saurabh
+ *
+ *                     REFRESH PAGE
+ */
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;

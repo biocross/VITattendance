@@ -1,22 +1,35 @@
 package com.battlex.vite;
 
+/**
+ * @author Saurabh
+ * @author Sids
+ *
+ *                     MAIN STARTUP PAGE
+ */
+
+
+
+
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-
 import android.app.Dialog;
 import android.app.ListActivity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.util.Log;
+import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -51,6 +64,10 @@ public class Main extends ListActivity {
         super.onCreate(savedInstanceState);
        
         requestWindowFeature(Window.FEATURE_NO_TITLE);
+        
+        System.out.println("Done! Starting services..");
+      
+		
         
        
 		
@@ -91,6 +108,27 @@ public class Main extends ListActivity {
 		intn.putStringArrayListExtra("data", data);
 		 Main.this.startActivity(intn);
 		}
+    
+    private String readTxt(){
+        InputStream inputStream = getResources().openRawResource(R.raw.license);
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        int i;
+     try {
+      i = inputStream.read();
+      while (i != -1)
+         {
+          byteArrayOutputStream.write(i);
+          i = inputStream.read();
+         }
+         inputStream.close();
+     } catch (IOException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+     }
+        return byteArrayOutputStream.toString();
+       }
+
+    
  String ur;
  //MENU
 private void setcl(){Intent intn = new Intent(Main.this, Register.class);
@@ -115,7 +153,14 @@ private void abt_bx(){
 		//text_email.setText(Html.fromHtml("<a href=\"mailto:battlex2010@yahoo.com\">Sau</a>"));
 		//text_email.setMovementMethod(LinkMovementMethod.getInstance());
 		
-		text.setText("Version: 1.2 \n\n\nDevelopers: \nSau\nBiocross\n\n\nBeta Testers:\nUD\nSid\n\nDevices Tested:\nAVD\nXperia X8\nGalaxy S+\nGalaxy Ace ");
+		
+		PackageInfo pInfo = null;
+		try {pInfo = getPackageManager().getPackageInfo(getPackageName(), 0);} catch (NameNotFoundException e) {}
+		Float curver = new Float(pInfo.versionName);
+		
+		//ABOUT BOX TEXT 
+		text.setText("Version: ".concat(Float.toString(curver)).concat(" \n\n\nDevelopers: \nSaurabh\nBiocross\n\n\nDevices Tested:\nXperia X8\nGalaxy S+\nGalaxy Ace\nGalaxy Y\n\n\n\n").concat(readTxt()));
+		text.setMovementMethod(LinkMovementMethod.getInstance());
 		ImageView image = (ImageView) dialog.findViewById(R.id.img_abt);
 		image.setImageResource(R.drawable.diab);
 		dialog.setTitle("About");
@@ -150,20 +195,15 @@ private void abt_bx(){
 	    	Intent cur = new Intent(this,Update_service.class);
 			cur.putExtra("url", ur);
 			startService(cur);
-	    	
-	    	
 	    default:
 	        return super.onOptionsItemSelected(item);
 	    }
 	}
     
-    
     //ASYNC TASK
         
     private class DownloadFilesTask extends AsyncTask<Void, Void, Void> {
     	private ProgressDialog dialog ;
-        
-    	
         String title = null;
         protected void onPreExecute (){
         	dialog = new ProgressDialog(Main.this);
@@ -243,10 +283,7 @@ private void abt_bx(){
             	        
             	        //STARTING PUSH NEWS HERE BITCHESS
             	        
-            	        
-            			
-            			
-            			
+            	        //FUCK IT DOSNT WORK :/
             			if (dialog.isShowing()) {
             	            dialog.dismiss();
             	        }

@@ -1,4 +1,12 @@
 package com.battlex.vite;
+
+/**
+ * @author Saurabh
+ * @author Sids
+ *
+ *                     CHECK FOR UPDATES SERVICE!!
+ */
+
 import com.crittercism.app.Crittercism;
 import java.io.IOException;
 import org.jsoup.Jsoup;
