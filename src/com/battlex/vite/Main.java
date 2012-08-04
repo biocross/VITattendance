@@ -81,6 +81,24 @@ public class Main extends ListActivity {
 		
     }
     
+	//THE AWESOME ALGORITHM
+	private void algo(int pos){
+		int j = 0;
+		for ( j = 0 ; pos>=2 ; pos-- ){
+			j = j + 9;
+		}
+		ArrayList<String> data = new ArrayList<String>();
+		data.add(links.get(j+2).text());
+		for (int i = 4 ; i <= 7 ; i++){
+			data.add(links.get(j+i).text());
+		}
+		
+		Intent intn = new Intent(Main.this, Info.class);
+		intn.putStringArrayListExtra("data", data);
+		 Main.this.startActivity(intn);
+		
+		
+	}
     
     //ACTIONBAR CLICK LISTNERS
     private OnClickListener blits= new OnClickListener(){@Override public void onClick(View v) {Intent intn = new Intent(Main.this, Restrt.class);Main.this.startActivity(intn);Main.this.finish();}};
@@ -92,22 +110,7 @@ public class Main extends ListActivity {
 		
 		//Toast toast = Toast.makeText(getApplicationContext(), Integer.toString(position), Toast.LENGTH_SHORT);
 		//toast.show();
-		int pos = position;
-		int j = 0;
-		for ( j = 0 ; pos>=2 ; pos-- ){
-			j = j + 5;
-		}
-		
-		//if (position==1){j = 0;}
-		System.out.println(j);
-		ArrayList<String> data = new ArrayList<String>();
-		for (int i=j  ; i<=j +4 ; i++ ){
-	    	data.add(links.get(i).text());
-	    		}
-		Intent intn = new Intent(Main.this, Info.class);
-		intn.putStringArrayListExtra("data", data);
-		 Main.this.startActivity(intn);
-		}
+		algo(position);}
     
     private String readTxt(){
         InputStream inputStream = getResources().openRawResource(R.raw.license);
@@ -122,7 +125,7 @@ public class Main extends ListActivity {
          }
          inputStream.close();
      } catch (IOException e) {
-      // TODO Auto-generated catch block
+      
       e.printStackTrace();
      }
         return byteArrayOutputStream.toString();
@@ -210,39 +213,66 @@ private void abt_bx(){
         	this.dialog.setMessage("Loading your attendance...");
         	this.dialog.setCancelable(false);
             this.dialog.show();
+           // temp();
+            
             
         }
+        /**
+        private void temp(){
+        	SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+            String ret = preferences.getString("regnum","notset");
+            String date = String.valueOf(preferences.getInt("date", 1));
+            String year = String.valueOf(preferences.getInt("year", 1990));
+            String month = String.valueOf(preferences.getInt("month", 0));
+            if (month.length() == 1){
+           	 month = "0".concat(month);     
+            }
+            if (date.length() == 1){
+           	 date = "0".concat(date);     
+            }
+            String url = "http://vitattx.appspot.com/att/".concat(ret).concat("/").concat(date).concat(month).concat(year);
+            Toast.makeText(getApplicationContext(), url, Toast.LENGTH_LONG).show();
+        } */
         
             		@Override
     		protected Void doInBackground(Void... arg0) {
             			try{
             				 SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                              String ret = preferences.getString("regnum","notset");
-                            
-                             String url = "http://vitinfo.ws/m/".concat(ret);
-                            
+                             String date = String.valueOf(preferences.getInt("date", 1));
+                             String year = String.valueOf(preferences.getInt("year", 1990));
+                             String month = String.valueOf(preferences.getInt("month", 0));
+                             if (month.length() == 1){
+                            	 month = "0".concat(month);     
+                             }
+                             if (date.length() == 1){
+                            	 date = "0".concat(date);     
+                             }
+                             String url = "http://vitattx.appspot.com/att/".concat(ret).concat("/").concat(date).concat(month).concat(year);
+                             
+                           
             				 doc = Jsoup.connect(url).timeout(0).get();
             				 //11bec0262
             				
-            				 content = doc.getElementById("overview");
-            	    	     links = content.getElementsByTag("td");
+            				 //content = doc.getElementById("overview");
+            	    	     links = doc.getElementsByTag("tr");
             	    	    	title = "Job Complete :)";
             	    	    	
-            	    	    for (int i=0 ; i<links.size() ; i++ ){
+            	    	    for (int i=2 ; i<links.size() ; i++ ){
             	    	    	Proces.add(links.get(i).text());
-            	    	    	i = i + 4;
+            	    	    	i = i + 8;
             	    	    		}
-            	    	    for (int i=4 ; i<links.size() ; i++ ){
+            	    	    for (int i=7 ; i<links.size() ; i++ ){
             	    	    	percent.add(links.get(i).text().concat("  "));
-            	    	    	i = i + 4;}
-            	    	    for (int i = 1 ; i<links.size() ; i++){
-            	    	    	slts.add(links.get(i).text());
-            	    	    	i = i + 4;
+            	    	    	i = i + 8;}
+            	    	    for (int i = 3 ; i<links.size() ; i++){
+            	    	    	slts.add(links.get(i+1).text());
+            	    	    	i = i + 8;
             	    	    }
             	    	   
             	        	
             	        	} catch(IOException e){};
-    			// TODO Auto-generated method stub
+    			
     			return null;
     		}
             		protected void onPostExecute(Void result){

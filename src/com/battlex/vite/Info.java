@@ -48,7 +48,7 @@ public class Info extends Activity {
 	        
 	        float one;
 	        float two;
-	        
+	        try{
 	        float att = new Float(values[2]);
 	        float cond = new Float(values[3]);
 	        one = ((att/(cond +1)) *100);
@@ -56,7 +56,10 @@ public class Info extends Activity {
 	        
 	        txt6.setText(Integer.toString((int)(Math.round(one))).concat(" %"));
 	        txt7.setText(Integer.toString((int)(Math.round(two))).concat(" %"));
-	        
+	        }catch(Exception e ){
+	        	txt6.setText("NA");
+	        	txt7.setText("NA");
+	        }
 	        
 	 }
      

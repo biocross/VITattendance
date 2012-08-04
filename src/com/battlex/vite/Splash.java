@@ -7,10 +7,6 @@ package com.battlex.vite;
  *                     SPLASH SCREEN
  */
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-
 import android.app.Activity;
 import com.crittercism.app.Crittercism;
 import android.content.Intent;
@@ -40,11 +36,14 @@ public class Splash extends Activity {
                          //remove SplashScreen from view
                          splash.setVisibility(View.GONE);
                          SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                         
+                        // Toast.makeText(getApplicationContext(),String.valueOf(preferences.getInt("date", 10)), Toast.LENGTH_SHORT).show();  
                          String ret = preferences.getString("regnum","notset");
-                         if (ret == "notset"){
+                         if (ret == "notset" || preferences.getInt("date", 100)==100){
                         	 Intent intn = new Intent(Splash.this, Register.class);
                      		 Splash.this.startActivity(intn);
                          }
+                         
                          else {
                         	 Intent intn = new Intent(Splash.this, Main.class);
                      		 Splash.this.startActivity(intn); }
