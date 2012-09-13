@@ -83,22 +83,30 @@ public class Main extends ListActivity {
     
 	//THE AWESOME ALGORITHM
 	private void algo(int pos){
+		int sub = pos-1;
 		int j = 0;
-		for ( j = 0 ; pos>=2 ; pos-- ){
-			j = j + 9;
+		if(pos == 0){j = 2;}
+		
+		for (  ; pos>=2 ; pos-- ){
+			j = j + 10;
 		}
 		ArrayList<String> data = new ArrayList<String>();
-		data.add(links.get(j+2).text());
-		for (int i = 4 ; i <= 7 ; i++){
+		data.add(links.get(j+3).text());
+		
+		for (int i = 4 ; i <= 10 ; i++){
 			data.add(links.get(j+i).text());
 		}
 		
 		Intent intn = new Intent(Main.this, Info.class);
 		intn.putStringArrayListExtra("data", data);
+		intn.putExtra("sub",Integer.toString(sub));
 		 Main.this.startActivity(intn);
 		
 		
 	}
+	
+	
+	
     
     //ACTIONBAR CLICK LISTNERS
     private OnClickListener blits= new OnClickListener(){@Override public void onClick(View v) {Intent intn = new Intent(Main.this, Restrt.class);Main.this.startActivity(intn);Main.this.finish();}};
@@ -162,7 +170,7 @@ private void abt_bx(){
 		Float curver = new Float(pInfo.versionName);
 		
 		//ABOUT BOX TEXT 
-		text.setText("Version: ".concat(Float.toString(curver)).concat(" \n\n\nDevelopers: \nSaurabh\nBiocross\n\n\nDevices Tested:\nXperia X8\nGalaxy S+\nGalaxy Ace\nGalaxy Y\n\n\n\n").concat(readTxt()));
+		text.setText("Version: ".concat(Float.toString(curver)).concat(" \n\n\nDevelopers: \n\nSaurabh \n(facebook.com/battlex2010)\n\nSid\n\n\nDevices Tested:\nXperia X8\nGalaxy S+\nGalaxy Ace\nGalaxy Y\nXperia P\n\n\n\n").concat(readTxt()));
 		text.setMovementMethod(LinkMovementMethod.getInstance());
 		ImageView image = (ImageView) dialog.findViewById(R.id.img_abt);
 		image.setImageResource(R.drawable.diab);
@@ -241,6 +249,7 @@ private void abt_bx(){
                              String ret = preferences.getString("regnum","notset");
                              String date = String.valueOf(preferences.getInt("date", 1));
                              String year = String.valueOf(preferences.getInt("year", 1990));
+                            
                              String month = String.valueOf(preferences.getInt("month", 0));
                              if (month.length() == 1){
                             	 month = "0".concat(month);     
@@ -253,21 +262,28 @@ private void abt_bx(){
                            
             				 doc = Jsoup.connect(url).timeout(0).get();
             				 //11bec0262
-            				
+            				 
+            				 
             				 //content = doc.getElementById("overview");
             	    	     links = doc.getElementsByTag("tr");
             	    	    	title = "Job Complete :)";
             	    	    	
-            	    	    for (int i=2 ; i<links.size() ; i++ ){
+            	    	    	//GET SUBJECTS
+            	    	    for (int i=3 ; i<links.size() ; i++ ){
             	    	    	Proces.add(links.get(i).text());
-            	    	    	i = i + 8;
+            	    	    	
+            	    	    	i = i + 9;
             	    	    		}
-            	    	    for (int i=7 ; i<links.size() ; i++ ){
+            	    	   
+            	    	    //GET ATTENDANCE
+            	    	    for (int i=9 ; i<links.size() ; i++ ){
             	    	    	percent.add(links.get(i).text().concat("  "));
-            	    	    	i = i + 8;}
-            	    	    for (int i = 3 ; i<links.size() ; i++){
+            	    	    	i = i + 9;}
+            	    	    
+            	    	    //GET SLOT
+            	    	    for (int i = 4 ; i<links.size() ; i++){
             	    	    	slts.add(links.get(i+1).text());
-            	    	    	i = i + 8;
+            	    	    	i = i + 9;
             	    	    }
             	    	   
             	        	
@@ -276,19 +292,29 @@ private void abt_bx(){
     			return null;
     		}
             		protected void onPostExecute(Void result){
-            			
+            			 SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+            			 SharedPreferences.Editor editor = preferences.edit();
+            			 
+            			 
             			Context context = getApplicationContext();
             			CharSequence text = title;
             			if (title==null){
             				
-            				text = "Network error! Please relaunch app!";           			
+            				text = "Network error! Please refresh or try again later :)";           			
             			}
             			int duration = Toast.LENGTH_SHORT;
             			Toast toast = Toast.makeText(context, text, duration);
             			toast.show();
             			String values [] = (String []) Proces.toArray (new String [Proces.size ()]);
+            			editor.putInt("subs_length", Proces.size()-1);
+            			editor.commit();
+            			array_break(values , "subs");
+            			
             			String per [] = (String []) percent.toArray (new String [percent.size ()]);
+            			array_break(per , "percent");
+            			
             			String slots [] = (String []) slts.toArray (new String [slts.size ()]);
+            			array_break(slots , "slots");
             			
             			ListView lv = getListView();
             			LayoutInflater inflater = getLayoutInflater();
@@ -301,7 +327,7 @@ private void abt_bx(){
             			MySimpleArrayAdapter adapter = new MySimpleArrayAdapter(getApplicationContext(), values);
             			adapter.per = per;
             			adapter.slots = slots;
-            		
+        
             			setListAdapter(adapter);
             			ImageButton btn_ref = (ImageButton) findViewById (R.id.imgbtn3);
             	        btn_ref.setOnClickListener(blits);
@@ -317,6 +343,18 @@ private void abt_bx(){
             			if (dialog.isShowing()) {
             	            dialog.dismiss();
             	        }
+            		}
+            		private void array_break(String arr[] , String key_name){
+            			SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+           			 SharedPreferences.Editor editor = preferences.edit();
+           			 
+            			for (int i = 0 ; i <= arr.length-1 ; i++){
+            				editor.putString(key_name + "_" + i , arr[i]);
+            				
+            			}
+            				editor.commit();
+            				
+            			
             		}
         }
 }

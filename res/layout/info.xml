@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+android:id="@+id/ScrollView01" android:layout_width="fill_parent"
+android:layout_height="fill_parent">
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -25,6 +28,7 @@
     android:id = "@+id/lblslot" 
     android:layout_width="fill_parent" 
     android:layout_height="wrap_content"
+    android:paddingTop = "15.9sp" 
     android:layout_below = "@id/lblsub"
     android:textSize="19dp"
     android:text="Slot:"/>
@@ -41,6 +45,7 @@
     android:textSize="19dp"
     android:layout_width="fill_parent" 
     android:layout_height="wrap_content"
+    android:paddingTop = "15.2sp" 
     android:layout_below = "@id/txtslot"
     android:text="Classes Attended:"/>
      
@@ -85,6 +90,7 @@
     android:id = "@+id/lblone" 
     android:layout_width="fill_parent" 
     android:layout_height="wrap_content" 
+    android:paddingTop = "15.9sp"
     android:layout_below = "@id/txtpercent"
     android:text="If you miss one more class: "/>
       
@@ -108,11 +114,79 @@
     android:layout_height="wrap_content" 
     android:layout_below = "@id/lbltwo"
     android:text="If you miss two more classes: "/>
-     
-     
+       
+       <TextView 
+    android:id = "@+id/lbl6" 
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:layout_below = "@id/txttwo"
+    android:text="If you miss three more classes: "/>
+        <TextView 
+    android:id = "@+id/txt7" 
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:layout_below = "@id/lbl6"
+    android:text="If you miss three more classes: "/>
+       
+       
+       <TextView 
+    android:id = "@+id/lbl3" 
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content"
+    android:paddingTop = "15.9sp" 
+    android:layout_below = "@id/txt7"
+    android:text="If you attend one class: "/>
+       
+       <TextView 
+    android:id = "@+id/txt3" 
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:layout_below = "@id/lbl3"
+    android:text="If you attend one class: "/>
+       
+        <TextView 
+    android:id = "@+id/lbl4" 
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:layout_below = "@id/txt3"
+    android:text="If you attend two classes: "/>
         
+          <TextView 
+    android:id = "@+id/txt4" 
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:layout_below = "@id/lbl4"
+    android:text="If you attend two classes: "/>
+          
+           <TextView 
+    android:id = "@+id/lbl7" 
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:layout_below = "@id/txt4"
+    android:text="If you attend three classes: "/>
+            <TextView 
+    android:id = "@+id/txt8" 
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:layout_below = "@id/lbl7"
+    android:text="If you attend three classes: "/>
+          
+          <TextView 
+    android:id = "@+id/lbl5" 
+    android:layout_width="fill_parent"
+    android:paddingTop = "15.9sp" 
+    android:layout_height="wrap_content" 
+    android:layout_below = "@id/txt8"
+    android:text="Last Updated On: "/>
+          
+          <TextView 
+    android:id = "@+id/txt6" 
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:layout_below = "@id/lbl5"
+    android:text="Loading.."/>
      
      
-    
 
 </RelativeLayout>
+</ScrollView>

@@ -19,12 +19,11 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Environment;
 import android.os.Handler;
-import android.widget.ProgressBar;
 import android.widget.RemoteViews;
 
 public class Update_service extends IntentService {
 	private int progress = 10;
-	ProgressBar progressBar;
+	
 	final Notification notification = new Notification(R.drawable.down, "Downloading...", System
             .currentTimeMillis());
 	
@@ -45,7 +44,7 @@ public class Update_service extends IntentService {
         notification.contentIntent = pendingIntent;
         notification.contentView.setImageViewResource(R.id.status_icon, R.drawable.down);
         notification.contentView.setTextViewText(R.id.status_text, "Downloading");
-        notification.contentView.setProgressBar(R.id.status_progress, 100, progress, false);
+        notification.contentView.setTextViewText(R.id.percent_text, "0%");
 		 return super.onStartCommand(intent, flags, startId);  
 	}
 	
@@ -83,7 +82,7 @@ public class Update_service extends IntentService {
                     
                     progress = (int) (total * 100 / fileLength);
                     output.write(data, 0, count);
-                    notification.contentView.setProgressBar(R.id.status_progress, 100, progress, false);
+                    notification.contentView.setTextViewText(R.id.percent_text, Integer.toString(progress).concat("%"));
                     
                     notificationManager.notify(42, notification);
                 }

@@ -50,6 +50,7 @@ public class Updater_service extends IntentService {
 		handler.post(new Runnable() {  
 			   @Override  
 			   public void run() {  
+				   
 				   SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
 				   SharedPreferences.Editor editor = preferences.edit();
 				   editor.putInt("upto", isit);  
@@ -62,6 +63,7 @@ public class Updater_service extends IntentService {
 		handler.post(new Runnable() {  
 			   @Override  
 			   public void run() {  
+				   System.out.println(url);
 				   SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
 				   SharedPreferences.Editor editor = preferences.edit();
 				   editor.putString("url", url);    
