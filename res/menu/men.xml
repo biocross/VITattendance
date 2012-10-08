@@ -1,20 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
      <item android:id="@+id/ref"
-          android:icon="@drawable/abt"
+          android:icon="@drawable/ref"
           android:title="Refresh"/>
     <item android:id="@+id/set"
           android:icon="@drawable/sett"
           android:title="Settings" />
     <item android:id="@+id/men_feed"
-          android:icon="@drawable/abt"
+          android:icon="@drawable/feed"
           android:title="Feedback"/>
     <item android:id="@+id/abt"
           android:icon="@drawable/abt"
           android:title="About"/>
+     <item android:id="@+id/men_upd"
+          android:icon="@drawable/down"
+          android:title="Update"/>
     <item android:id="@+id/men_end"
-          android:icon="@drawable/abt"
+          android:icon="@drawable/ext"
           android:title="Exit"/>
+   
      
    
 </menu>

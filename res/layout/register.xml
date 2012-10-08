@@ -3,35 +3,64 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-      <Button
-          android:id="@+id/btnsave"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_alignParentBottom="true"
-          android:layout_centerHorizontal="true"
-          android:layout_marginBottom="162dp"
-          android:text="Save" />
+    <include
+        android:id="@+id/head"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/reg_header" />
 
-      <EditText
-          android:id="@+id/txtreg"
-          android:layout_width="fill_parent"
-          android:layout_height="wrap_content"
-          android:layout_above="@+id/btnsave"
-          android:layout_alignParentLeft="true"
-          android:layout_marginBottom="20dp"
-          android:ems="10"
-          android:inputType="text" >
+    <TextView
+        android:id="@+id/lblreg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/head"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="14dp"
+        android:text="Please enter your registration number:" />
 
-          <requestFocus />
-      </EditText>
+    <EditText
+        android:id="@+id/txtreg"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/lblreg"
+        android:layout_marginTop="14dp"
+        android:ems="10"
+        android:inputType="text" />
 
-      <TextView
-          android:id="@+id/lblreg"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_above="@+id/txtreg"
-          android:layout_centerHorizontal="true"
-          android:layout_marginBottom="40dp"
-          android:text="Please enter your registration number:" />
+    <Button
+        android:id="@+id/btnupd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/txtreg"
+        android:layout_alignBottom="@+id/txtreg"
+        android:layout_alignParentLeft="true"
+        android:text="Save" />
+
+    <Button
+        android:id="@+id/btnsave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="84dp"
+        android:text="Save" />
+
+    <DatePicker
+        android:id="@+id/datePicker1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btnsave"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp" />
+
+    <TextView
+        android:id="@+id/lbl_dob"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/datePicker1"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="14dp"
+        android:text="Enter date of birth: " />
 
 </RelativeLayout>

@@ -1,5 +1,9 @@
 package com.battlex.vite;
-
+/**
+ * @author Saurabh
+ *
+ *                   ARRAY LIST ADAPTER CLASS
+ */
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
