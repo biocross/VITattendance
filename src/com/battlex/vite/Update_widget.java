@@ -11,11 +11,11 @@ import android.util.Log;
 import android.widget.RemoteViews;
 
 public class Update_widget extends Service {
-  private static final String LOG = "com.sau.vita";
+  
 
   @Override
   public void onStart(Intent intent, int startId) {
-    Log.i(LOG, "Widget Called");
+    Log.v("VIT", "Widget: Called");
     // Create some random data
 
     AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(this

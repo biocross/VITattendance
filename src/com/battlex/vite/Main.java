@@ -18,6 +18,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.app.ListActivity;
 import android.app.ProgressDialog;
@@ -30,6 +31,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.text.method.LinkMovementMethod;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -46,10 +48,6 @@ import android.widget.Toast;
 
 public class Main extends ListActivity {
 	
-	
-		
-	
-	
 	Document doc = null;
 	Element content = null;
     Elements links = null;
@@ -57,7 +55,6 @@ public class Main extends ListActivity {
 	ArrayList<String> percent = new ArrayList<String>();
 	ArrayList<String> slts = new ArrayList<String>();
 	
-    /** Called when the activity is first created. */
     
 	@Override
     public void onCreate(Bundle savedInstanceState) {
@@ -65,16 +62,7 @@ public class Main extends ListActivity {
        
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         
-        System.out.println("Done! Starting services..");
-      
-		
-        
        
-		
-       // getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, 
-                        //        WindowManager.LayoutParams.FLAG_FULLSCREEN);
-		
-		
 		//GET ATTENDANCE
         new DownloadFilesTask().execute();
        
@@ -83,6 +71,7 @@ public class Main extends ListActivity {
     
 	//THE AWESOME ALGORITHM
 	private void algo(int pos){
+		
 		int sub = pos-1;
 		int j = 0;
 		if(pos == 0){j = 2;}
@@ -96,6 +85,8 @@ public class Main extends ListActivity {
 		for (int i = 4 ; i <= 10 ; i++){
 			data.add(links.get(j+i).text());
 		}
+		
+	
 		
 		Intent intn = new Intent(Main.this, Info.class);
 		intn.putStringArrayListExtra("data", data);
@@ -112,15 +103,14 @@ public class Main extends ListActivity {
     private OnClickListener blits= new OnClickListener(){@Override public void onClick(View v) {Intent intn = new Intent(Main.this, Restrt.class);Main.this.startActivity(intn);Main.this.finish();}};
     private OnClickListener act_feed= new OnClickListener(){@Override public void onClick(View v) {Intent intn = new Intent(Main.this, Register.class);Main.this.startActivity(intn);}};
     private OnClickListener act_men = new OnClickListener(){@Override public void onClick(View v) {openOptionsMenu(); }};
+    
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
 		super.onListItemClick(l, v, position, id);
-		
-		//Toast toast = Toast.makeText(getApplicationContext(), Integer.toString(position), Toast.LENGTH_SHORT);
-		//toast.show();
 		algo(position);}
     
     private String readTxt(){
+    	
         InputStream inputStream = getResources().openRawResource(R.raw.license);
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         int i;
@@ -153,17 +143,13 @@ public boolean onPrepareOptionsMenu (Menu menu) {
     return true;
 }
     
+@SuppressLint("UseValueOf")
 private void abt_bx(){
 		
 		Dialog dialog = new Dialog(this);
 
 		dialog.setContentView(R.layout.di_abt);
 		TextView text = (TextView) dialog.findViewById(R.id.txt_abt);
-		
-		//TextView text_email = (TextView) dialog.findViewById(R.id.txt_email);
-		//text_email.setText(Html.fromHtml("<a href=\"mailto:battlex2010@yahoo.com\">Sau</a>"));
-		//text_email.setMovementMethod(LinkMovementMethod.getInstance());
-		
 		
 		PackageInfo pInfo = null;
 		try {pInfo = getPackageManager().getPackageInfo(getPackageName(), 0);} catch (NameNotFoundException e) {}
@@ -214,33 +200,19 @@ private void abt_bx(){
     //ASYNC TASK
         
     private class DownloadFilesTask extends AsyncTask<Void, Void, Void> {
+    	
+    	
+    	
     	private ProgressDialog dialog ;
         String title = null;
         protected void onPreExecute (){
+        	
         	dialog = new ProgressDialog(Main.this);
         	this.dialog.setMessage("Loading your attendance...");
         	this.dialog.setCancelable(false);
             this.dialog.show();
-           // temp();
-            
-            
         }
-        /**
-        private void temp(){
-        	SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-            String ret = preferences.getString("regnum","notset");
-            String date = String.valueOf(preferences.getInt("date", 1));
-            String year = String.valueOf(preferences.getInt("year", 1990));
-            String month = String.valueOf(preferences.getInt("month", 0));
-            if (month.length() == 1){
-           	 month = "0".concat(month);     
-            }
-            if (date.length() == 1){
-           	 date = "0".concat(date);     
-            }
-            String url = "http://vitattx.appspot.com/att/".concat(ret).concat("/").concat(date).concat(month).concat(year);
-            Toast.makeText(getApplicationContext(), url, Toast.LENGTH_LONG).show();
-        } */
+        
         
             		@Override
     		protected Void doInBackground(Void... arg0) {
@@ -249,14 +221,16 @@ private void abt_bx(){
                              String ret = preferences.getString("regnum","notset");
                              String date = String.valueOf(preferences.getInt("date", 1));
                              String year = String.valueOf(preferences.getInt("year", 1990));
-                            
                              String month = String.valueOf(preferences.getInt("month", 0));
+                             
                              if (month.length() == 1){
                             	 month = "0".concat(month);     
                              }
+                             
                              if (date.length() == 1){
                             	 date = "0".concat(date);     
                              }
+                             
                              String url = "http://vitattx.appspot.com/att/".concat(ret).concat("/").concat(date).concat(month).concat(year);
                              
                            
@@ -271,7 +245,6 @@ private void abt_bx(){
             	    	    	//GET SUBJECTS
             	    	    for (int i=3 ; i<links.size() ; i++ ){
             	    	    	Proces.add(links.get(i).text());
-            	    	    	
             	    	    	i = i + 9;
             	    	    		}
             	    	   
@@ -287,67 +260,66 @@ private void abt_bx(){
             	    	    }
             	    	   
             	        	
-            	        	} catch(IOException e){};
+            	        	} catch(IOException e){ Log.e("VIT", "Background: " + e.getMessage());}
     			
     			return null;
     		}
             		protected void onPostExecute(Void result){
-            			 SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-            			 SharedPreferences.Editor editor = preferences.edit();
+            			
             			 
             			 
             			Context context = getApplicationContext();
             			CharSequence text = title;
-            			if (title==null){
-            				
-            				text = "Network error! Please refresh or try again later :)";           			
-            			}
-            			int duration = Toast.LENGTH_SHORT;
-            			Toast toast = Toast.makeText(context, text, duration);
-            			toast.show();
-            			String values [] = (String []) Proces.toArray (new String [Proces.size ()]);
-            			editor.putInt("subs_length", Proces.size()-1);
-            			editor.commit();
-            			array_break(values , "subs");
-            			
-            			String per [] = (String []) percent.toArray (new String [percent.size ()]);
-            			array_break(per , "percent");
-            			
-            			String slots [] = (String []) slts.toArray (new String [slts.size ()]);
-            			array_break(slots , "slots");
             			
             			ListView lv = getListView();
             			LayoutInflater inflater = getLayoutInflater();
             			
             			ViewGroup header = (ViewGroup)inflater.inflate(R.layout.header, lv , false);
-            			
             			lv.addHeaderView(header, null, false);
             			
-            			
-            			MySimpleArrayAdapter adapter = new MySimpleArrayAdapter(getApplicationContext(), values);
-            			adapter.per = per;
-            			adapter.slots = slots;
-        
-            			setListAdapter(adapter);
             			ImageButton btn_ref = (ImageButton) findViewById (R.id.imgbtn3);
-            	        btn_ref.setOnClickListener(blits);
-            	        ImageButton btn_feed = (ImageButton) findViewById (R.id.imgbtn2);
-            	        btn_feed.setOnClickListener(act_feed);
-            	        ImageButton btn_men = (ImageButton) findViewById (R.id.imgbtn4);
-            	        btn_men.setOnClickListener(act_men);
-            	       
-            	        
-            	        //STARTING PUSH NEWS HERE BITCHESS
-            	        
-            	        //FUCK IT DOSNT WORK :/
+        				btn_ref.setOnClickListener(blits);
+        				ImageButton btn_feed = (ImageButton) findViewById (R.id.imgbtn2);
+        				btn_feed.setOnClickListener(act_feed);
+        				ImageButton btn_men = (ImageButton) findViewById (R.id.imgbtn4);
+        				btn_men.setOnClickListener(act_men);
+            			
+        				String values [] = (String []) Proces.toArray (new String [Proces.size ()]);
+        				String per [] = (String []) percent.toArray (new String [percent.size ()]);   			
+        				String slots [] = (String []) slts.toArray (new String [slts.size ()]);
+        				MySimpleArrayAdapter adapter = new MySimpleArrayAdapter(getApplicationContext(), values);           			
+        				adapter.per = per;
+        				adapter.slots = slots;
+        				setListAdapter(adapter);
+            			
+            			if (title==null){
+            				
+            				text = "Network error! Please refresh or check widget for last update :)";  
+            			}
+            			
+            			else {
+            				SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext()); 
+            				SharedPreferences.Editor editor = preferences.edit();
+            				editor.putInt("subs_length", Proces.size()-1);
+            				editor.commit();
+            				array_break(values , "subs");
+            				array_break(per , "percent");  
+            				array_break(slots , "slots");
+            			}
+            			
+            			
+            		  
+            			int duration = Toast.LENGTH_SHORT;
+            			Toast toast = Toast.makeText(context, text, duration);
+            			toast.show();
             			if (dialog.isShowing()) {
             	            dialog.dismiss();
             	        }
             		}
             		private void array_break(String arr[] , String key_name){
             			SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-           			 SharedPreferences.Editor editor = preferences.edit();
-           			 
+            			SharedPreferences.Editor editor = preferences.edit();
+            			
             			for (int i = 0 ; i <= arr.length-1 ; i++){
             				editor.putString(key_name + "_" + i , arr[i]);
             				

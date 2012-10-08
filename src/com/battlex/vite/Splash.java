@@ -7,6 +7,7 @@ package com.battlex.vite;
  *                     SPLASH SCREEN
  */
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import com.crittercism.app.Crittercism;
 import android.content.Intent;
@@ -21,6 +22,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
 
 public class Splash extends Activity {
 	private ImageView splash;
@@ -59,14 +61,15 @@ public class Splash extends Activity {
 	
 	
 	/** Called when the activity is first created. */
-    @Override
+    @SuppressLint({ "UseValueOf","HandlerLeak" })
+	@Override
     public void onCreate(Bundle savedInstanceState) {
     	
 
         super.onCreate(savedInstanceState);
-       // Crittercism.init(getApplicationContext(), "4feb55b9be790e162a000003");
-       // String breadcrumb = "Crittercism has init, splash displayed.";
-       // Crittercism.leaveBreadcrumb(breadcrumb);
+       Crittercism.init(getApplicationContext(), "4feb55b9be790e162a000003");
+      String breadcrumb = "Crittercism has init, splash displayed.";
+        Crittercism.leaveBreadcrumb(breadcrumb);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, 
                                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -76,13 +79,14 @@ public class Splash extends Activity {
 		try {
 			pInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
 		} catch (NameNotFoundException e) {}
-		//Toast.makeText(getApplicationContext(), pInfo.versionName, Toast.LENGTH_LONG).show();
+		
 			Float curver = new Float(pInfo.versionName);
 			Intent cur = new Intent(this,Updater_service.class);
 			cur.putExtra("ver", curver);
 			startService(cur);
 			
         splash = (ImageView) findViewById(R.id.splashscreen);
+        splash.setScaleType(ScaleType.FIT_XY);
         Message msg = new Message();
         msg.what = STOPSPLASH;
         splashHandler.sendMessageDelayed(msg, SPLASHTIME);

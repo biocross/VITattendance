@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="4dip"
-    android:background="@drawable/myshape" >
+    android:background="@drawable/w_back" >
 
     <TextView
         android:id="@+id/lbl_wid_sub"
@@ -14,6 +14,7 @@
         android:layout_alignParentLeft="true"
         android:gravity="center_horizontal|center_vertical"
         android:layout_margin="4dip"
+        android:textColor="#000001"
          >
     </TextView>
     <TextView
@@ -25,6 +26,7 @@
         android:gravity="center_horizontal|center_vertical"
         android:layout_below =  "@id/lbl_wid_sub"
         android:layout_margin="4dip"
+         android:textColor="#000001"
          >
     </TextView>
     
@@ -37,23 +39,25 @@
         android:gravity="center_horizontal|center_vertical"
         android:layout_below =  "@id/lbl_wid_per"
         android:layout_margin="4dip"
+          android:textColor="#000001"
          >
+         
     </TextView>
     
      <ImageButton 
          android:id="@+id/img_wid_nxt"
-         android:layout_width="40dp" 
-         android:layout_height="40dp"
+         android:layout_width="32dp" 
+         android:layout_height="32dp"
          android:layout_alignParentRight="true"
          android:layout_alignParentBottom="true"
-         android:background="@drawable/forward" />
+         android:background="@drawable/forward_w" />
      
       <ImageButton 
          android:id="@+id/img_wid_bck"
-         android:layout_width="40dp" 
-         android:layout_height="40dp"
+         android:layout_width="32dp" 
+         android:layout_height="32dp"
          android:layout_alignParentLeft="true"
          android:layout_alignParentBottom="true"
-         android:background="@drawable/back" />
+         android:background="@drawable/back_w" />
 
     </RelativeLayout> 
