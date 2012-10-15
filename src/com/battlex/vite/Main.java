@@ -240,7 +240,7 @@ private void abt_bx(){
             				 
             				 //content = doc.getElementById("overview");
             	    	     links = doc.getElementsByTag("tr");
-            	    	    	title = "Job Complete :)";
+            	    	    	title = "Loading Complete :)";
             	    	    	
             	    	    	//GET SUBJECTS
             	    	    for (int i=3 ; i<links.size() ; i++ ){
@@ -294,7 +294,11 @@ private void abt_bx(){
             			
             			if (title==null){
             				
-            				text = "Network error! Please refresh or check widget for last update :)";  
+            				text = "Network error! Please refresh or check widget for last update";  
+            			}
+            			
+            			else if(title.equals("404 Not Found")){
+            				text = "Please check your registration number / Date of Birth";
             			}
             			
             			else {
