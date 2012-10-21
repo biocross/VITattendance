@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.battlex.vite"
     android:versionCode="2"
-    android:versionName="1.5" >
+    android:versionName="1.6" >
     <uses-permission android:name = "android.permission.INTERNET"/>
     <uses-sdk android:minSdkVersion="7" android:targetSdkVersion="8" />
     <uses-permission android:name = "android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -48,7 +48,7 @@
         <activity android:name = ".Main" android:screenOrientation="portrait"  />
         <activity android:name = ".Feedback" android:noHistory="true" android:screenOrientation="portrait"/>
          <activity android:name = ".Restrt"  android:noHistory="true"/>
-        <activity android:name = ".Info"/>
+        <activity android:name = ".Info" android:screenOrientation="portrait" />
         <activity android:name = ".Register" android:noHistory="true" android:screenOrientation="portrait" android:windowSoftInputMode="adjustPan"/>
 
     </application>
