@@ -25,6 +25,7 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 
 public class Splash extends Activity {
+	 SharedPreferences preferences;
 	private ImageView splash;
 	
 	 private static final int STOPSPLASH = 0;
@@ -37,7 +38,7 @@ public class Splash extends Activity {
                  case STOPSPLASH:
                          //remove SplashScreen from view
                          splash.setVisibility(View.GONE);
-                         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                        
                          
                         // Toast.makeText(getApplicationContext(),String.valueOf(preferences.getInt("date", 10)), Toast.LENGTH_SHORT).show();  
                          String ret = preferences.getString("regnum","notset");
@@ -65,19 +66,21 @@ public class Splash extends Activity {
 	@Override
     public void onCreate(Bundle savedInstanceState) {
     	
+    	
 
         super.onCreate(savedInstanceState);
         
+        preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         //START CRITTERCISM
         Crittercism.init(getApplicationContext(), "4feb55b9be790e162a000003");
-        String breadcrumb = "Crittercism has init, splash displayed.";
-        Crittercism.leaveBreadcrumb(breadcrumb);
+        Crittercism.setUsername(preferences.getString("regnum", "regnum"));
         
         
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, 
                                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.main);
+        
         //START SERVICE
         PackageInfo pInfo = null;
 		try {
