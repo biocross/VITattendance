@@ -15,6 +15,9 @@
      <item android:id="@+id/men_upd"
           android:icon="@drawable/down"
           android:title="Update"/>
+     <item android:id="@+id/men_chg"
+          android:icon="@drawable/ext"
+          android:title="Changelog"/>
     <item android:id="@+id/men_end"
           android:icon="@drawable/ext"
           android:title="Exit"/>

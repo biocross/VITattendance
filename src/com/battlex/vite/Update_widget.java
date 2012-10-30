@@ -68,12 +68,9 @@ public class Update_widget extends Service {
           .getApplicationContext().getPackageName(),
           R.layout.widget_layout);
       // Set the text
-      remoteViews.setTextViewText(R.id.lbl_wid_sub ,
-          "Subject: " + sub);
-      remoteViews.setTextViewText(R.id.lbl_wid_per ,
-              "Percentage: " + per);
-      remoteViews.setTextViewText(R.id.lbl_wid_slt ,
-              "Slot: " + slt);
+      remoteViews.setTextViewText(R.id.lbl_wid_sub , sub);
+      remoteViews.setTextViewText(R.id.lbl_wid_per , per);
+      remoteViews.setTextViewText(R.id.lbl_wid_slt , slt);
 
       // Register an onClickListener
       Intent clickIntent = new Intent(this.getApplicationContext(),

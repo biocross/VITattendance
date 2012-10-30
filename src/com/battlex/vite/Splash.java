@@ -67,9 +67,13 @@ public class Splash extends Activity {
     	
 
         super.onCreate(savedInstanceState);
-       Crittercism.init(getApplicationContext(), "4feb55b9be790e162a000003");
-      String breadcrumb = "Crittercism has init, splash displayed.";
+        
+        //START CRITTERCISM
+        Crittercism.init(getApplicationContext(), "4feb55b9be790e162a000003");
+        String breadcrumb = "Crittercism has init, splash displayed.";
         Crittercism.leaveBreadcrumb(breadcrumb);
+        
+        
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, 
                                 WindowManager.LayoutParams.FLAG_FULLSCREEN);

@@ -39,7 +39,6 @@
                                 
                                 <ImageButton android:id="@+id/imgbtn3"
                                         android:layout_width="32dp" android:layout_height="32dp"
-                                         
                                          android:layout_alignParentTop="true"
                                          android:layout_marginRight="14dp"
                                          android:layout_toLeftOf="@+id/imgbtn4"
@@ -53,6 +52,15 @@
                                     android:layout_marginRight="14dp"
                                     android:layout_toLeftOf="@+id/imgbtn3"
                                     android:background="@drawable/sett" />
+                                
+                                  <ImageButton
+                                    android:id="@+id/imgbtn5"
+                                    android:layout_width="32dp"
+                                    android:layout_height="32dp"
+                                    android:layout_alignParentTop="true"
+                                    android:layout_marginRight="14dp"
+                                    android:layout_toLeftOf="@+id/imgbtn2"
+                                    android:background="@drawable/offline" />
 
                         </RelativeLayout>
                 </LinearLayout>

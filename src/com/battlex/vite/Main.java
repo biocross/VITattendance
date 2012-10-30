@@ -47,7 +47,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class Main extends ListActivity {
-	
+	Boolean offline = false;
 	Document doc = null;
 	Element content = null;
     Elements links = null;
@@ -61,6 +61,7 @@ public class Main extends ListActivity {
         super.onCreate(savedInstanceState);
        
         requestWindowFeature(Window.FEATURE_NO_TITLE);
+       
         
        
 		//GET ATTENDANCE
@@ -71,47 +72,74 @@ public class Main extends ListActivity {
     
 	//THE AWESOME ALGORITHM
 	private void algo(int pos){
-		
+		ArrayList<String> data = new ArrayList<String>();
 		int sub = pos-1;
+		
+		
+		if (offline == false){
+		
 		int j = 0;
 		if(pos == 0){j = 2;}
 		
 		for (  ; pos>=2 ; pos-- ){
 			j = j + 10;
 		}
-		ArrayList<String> data = new ArrayList<String>();
+		
 		data.add(links.get(j+3).text());
 		
 		for (int i = 4 ; i <= 10 ; i++){
 			data.add(links.get(j+i).text());
 		}
 		
-	
-		
 		Intent intn = new Intent(Main.this, Info.class);
 		intn.putStringArrayListExtra("data", data);
 		intn.putExtra("sub",Integer.toString(sub));
 		 Main.this.startActivity(intn);
 		
+		}
+		
+		else
+		{
+			infbox("Cannot access details page \nin offline mode!");
+		}
+		
+	
+		
 		
 	}
 	
+	private void infbox(String mssg){
+		//INFO BOX
+		Dialog dialog = new Dialog(this);
 	
+		dialog.setContentView(R.layout.di_abt);
+		TextView text = (TextView) dialog.findViewById(R.id.txt_abt);
+		
+		text.setText(mssg);
+		text.setMovementMethod(LinkMovementMethod.getInstance());
+		ImageView image = (ImageView) dialog.findViewById(R.id.img_abt);
+		image.setImageResource(R.drawable.info);
+		dialog.setTitle("Info");
+		dialog.show();
+		
+		
+	}
 	
     
     //ACTIONBAR CLICK LISTNERS
     private OnClickListener blits= new OnClickListener(){@Override public void onClick(View v) {Intent intn = new Intent(Main.this, Restrt.class);Main.this.startActivity(intn);Main.this.finish();}};
     private OnClickListener act_feed= new OnClickListener(){@Override public void onClick(View v) {Intent intn = new Intent(Main.this, Register.class);Main.this.startActivity(intn);}};
     private OnClickListener act_men = new OnClickListener(){@Override public void onClick(View v) {openOptionsMenu(); }};
+    private OnClickListener msg_off = new OnClickListener(){@Override public void onClick(View v) {infbox("You are currently\noffline."); }};
     
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
 		super.onListItemClick(l, v, position, id);
 		algo(position);}
     
-    private String readTxt(){
+    private String readTxt(int id){
     	
-        InputStream inputStream = getResources().openRawResource(R.raw.license);
+        InputStream inputStream = getResources().openRawResource(id);
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         int i;
      try {
@@ -156,13 +184,29 @@ private void abt_bx(){
 		Float curver = new Float(pInfo.versionName);
 		
 		//ABOUT BOX TEXT 
-		text.setText("Version: ".concat(Float.toString(curver)).concat(" \n\n\nDevelopers: \n\nSaurabh \n(facebook.com/battlex2010)\n\nSid\n\n\nDevices Tested:\nXperia X8\nGalaxy S+\nGalaxy Ace\nGalaxy Y\nXperia P\n\n\n\n").concat(readTxt()));
+		text.setText("Version: ".concat(Float.toString(curver)).concat(" \n\n\nDevelopers: \n\nSaurabh \n(facebook.com/battlex2010)\n\nSiddharth \n (facebook.com/biocross) \n\nDevices Tested On:\nXperia X8\nGalaxy S+\nGalaxy S2\nGalaxy Note\nXperia P\n\n\n\n").concat(readTxt(R.raw.license)));
 		text.setMovementMethod(LinkMovementMethod.getInstance());
 		ImageView image = (ImageView) dialog.findViewById(R.id.img_abt);
 		image.setImageResource(R.drawable.diab);
 		dialog.setTitle("About");
 		dialog.show();
 	}
+
+private void changeLog(){
+	//CHANGELOG
+	Dialog dialog = new Dialog(this);
+
+	dialog.setContentView(R.layout.di_abt);
+	TextView text = (TextView) dialog.findViewById(R.id.txt_abt);
+
+	 
+	text.setText(readTxt(R.raw.changelog));
+	text.setMovementMethod(LinkMovementMethod.getInstance());
+	ImageView image = (ImageView) dialog.findViewById(R.id.img_abt);
+	image.setImageResource(R.drawable.chl);
+	dialog.setTitle("Changelog");
+	dialog.show();
+}
     
     @Override
 	 public boolean onCreateOptionsMenu(Menu menu) {
@@ -188,6 +232,10 @@ private void abt_bx(){
 	    	return true;
 	    case R.id.men_end:
 	    	System.exit(0);
+	    case R.id.men_chg:
+	    	changeLog();
+	    	return true;
+	    	
 	    case R.id.men_upd:
 	    	Intent cur = new Intent(this,Update_service.class);
 			cur.putExtra("url", ur);
@@ -235,12 +283,13 @@ private void abt_bx(){
                              
                            
             				 doc = Jsoup.connect(url).timeout(0).get();
+            				 
             				 //11bec0262
             				 
             				 
             				 //content = doc.getElementById("overview");
             	    	     links = doc.getElementsByTag("tr");
-            	    	    	title = "Job Complete :)";
+            	    	    	title = "Widget Updated! :)";
             	    	    	
             	    	    	//GET SUBJECTS
             	    	    for (int i=3 ; i<links.size() ; i++ ){
@@ -267,7 +316,9 @@ private void abt_bx(){
             		protected void onPostExecute(Void result){
             			
             			 
-            			 
+            			SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext()); 
+        				SharedPreferences.Editor editor = preferences.edit();
+        				
             			Context context = getApplicationContext();
             			CharSequence text = title;
             			
@@ -283,7 +334,11 @@ private void abt_bx(){
         				btn_feed.setOnClickListener(act_feed);
         				ImageButton btn_men = (ImageButton) findViewById (R.id.imgbtn4);
         				btn_men.setOnClickListener(act_men);
-            			
+        				
+        				ImageButton btn_off = (ImageButton) findViewById (R.id.imgbtn5);
+        				btn_off.setVisibility(View.INVISIBLE);
+        				
+        				
         				String values [] = (String []) Proces.toArray (new String [Proces.size ()]);
         				String per [] = (String []) percent.toArray (new String [percent.size ()]);   			
         				String slots [] = (String []) slts.toArray (new String [slts.size ()]);
@@ -294,12 +349,41 @@ private void abt_bx(){
             			
             			if (title==null){
             				
-            				text = "Network error! Please refresh or check widget for last update :)";  
+            				
+            				//OFFLINE MODE BIAACH!! 
+            				offline = true;
+            				text = "Network error! Showing last update";
+            				int length = preferences.getInt("subs_length", 0);
+            				btn_off.setVisibility(View.VISIBLE);
+            				btn_off.setOnClickListener(msg_off);
+            				//CLEAR PREVIOUS DATA
+            				Proces.clear();
+            				slts.clear();
+            				percent.clear();
+            				
+            				if (length != 0 ){
+            					for (int g = 0 ; g <= length ; g++){
+            						
+            						Proces.add(preferences.getString("subs_"+ g, "NA"));
+            						slts.add(preferences.getString("slots_" + g , "NA"));
+            						percent.add(preferences.getString("percent_" + g , "NA"));
+            					}
+            					 values = (String []) Proces.toArray (new String [Proces.size ()]);
+                				 per = (String []) percent.toArray (new String [percent.size ()]);   			
+                				 slots  = (String []) slts.toArray (new String [slts.size ()]);
+                				 adapter = new MySimpleArrayAdapter(getApplicationContext(), values);           			
+                				adapter.per = per;
+                				adapter.slots = slots;
+                				setListAdapter(adapter);
+            				}
+            			}
+            			
+            			else if(title.equals("404 Not Found")){
+            				text = "Please check your Registration number / Date of Birth";
             			}
             			
             			else {
-            				SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext()); 
-            				SharedPreferences.Editor editor = preferences.edit();
+            				
             				editor.putInt("subs_length", Proces.size()-1);
             				editor.commit();
             				array_break(values , "subs");
@@ -315,6 +399,23 @@ private void abt_bx(){
             			if (dialog.isShowing()) {
             	            dialog.dismiss();
             	        }
+            			
+            			float chk = preferences.getFloat("changelog", 0);
+            			
+            			PackageInfo pInfo = null;
+            			try {pInfo = getPackageManager().getPackageInfo(getPackageName(), 0);} catch (NameNotFoundException e) {}
+            			Float curver = new Float(pInfo.versionName);
+            			
+            			if (chk == 0 || chk != curver){
+            				editor.putFloat("changelog", curver);
+            				changeLog();
+            				editor.commit();
+            			}
+            			
+            			
+            			
+            			
+            			
             		}
             		private void array_break(String arr[] , String key_name){
             			SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
